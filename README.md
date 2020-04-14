@@ -3,6 +3,11 @@ JavaFX klijentska aplikacija za studentsku službu
 
 klijent za https://github.com/RAFSoftLab/studentska-sluzba-server 
 
+Komanda za pokretanje:
+
+mvn clean javafx:run 
+
+
 Urađeno
 
 - osnovna maven konfiguracija
