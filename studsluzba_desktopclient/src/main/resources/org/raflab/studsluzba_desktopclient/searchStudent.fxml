@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+
+
+<BorderPane fx:id="mainPane" prefHeight="400" prefWidth="800" xmlns:fx="http://javafx.com/fxml" fx:controller="org.raflab.studsluzba_desktopclient.controllers.MainWindowController">
+
+<top>
+	<fx:include source="menuBar.fxml"/>
+</top>
+
+<center>
+	
+	<Label text="Forma za pretraživanje studenata" />
+</center>
+
+
+</BorderPane>
