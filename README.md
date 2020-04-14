@@ -6,7 +6,7 @@ klijent za https://github.com/RAFSoftLab/studentska-sluzba-server
 Urađeno
 
 - osnovna maven konfiguracija
-- osnovna JavaFx arhitektura - otvaranje osnovnih formi iz menija
+- osnovna JavaFX arhitektura - otvaranje osnovnih formi iz menija
 
 Uraditi
 
@@ -18,5 +18,6 @@ u kojoj je moguće pozvati različite akcije za učitanog studenta, na primer ge
 upis ili obnova godine, unos uplate
 
 - forma za unos novog studenta, unose se podaci iz modela (serverski projekat) podeljeni u više tabova
+
 
 
