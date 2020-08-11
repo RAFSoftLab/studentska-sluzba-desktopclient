@@ -7,7 +7,7 @@
 <?import javafx.scene.control.Label?>
 
 
-<BorderPane fx:id="mainPane" prefHeight="400" prefWidth="800" xmlns:fx="http://javafx.com/fxml" fx:controller="org.raflab.studsluzba_desktopclient.controllers.MainWindowController">
+<BorderPane fx:id="mainPane" prefHeight="400" prefWidth="800" xmlns:fx="http://javafx.com/fxml" fx:controller="org.raflab.studsluzbadesktopclient.controllers.MainWindowController">
 
 <top>
 	<fx:include source="menuBar.fxml"/>
@@ -15,7 +15,7 @@
 
 <center>
 	
-	<Label text="Forma za pretraživanje studenata" />
+	<Label text="Forma za pretraživanje nastavnika" />
 </center>
 
 
