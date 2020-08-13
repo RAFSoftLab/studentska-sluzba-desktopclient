@@ -12,17 +12,15 @@ Urađeno
 
 - osnovna maven konfiguracija
 - osnovna JavaFX arhitektura - otvaranje osnovnih formi iz menija
+- JavaFX - Spring Boot integracija
+- osnovna ekranska forma, meni,  brza pretraga po indeksu (skraćeno), pretraga po imenu, prezimenu i elementima indeksa
+- otvaranje profila studenta posle pretrage
 
 Uraditi
-
-- forma za pretraživanje studenata (prva forma koja se pojavljuje kada se otvori aplikacija), 
-osnovna pretraga ide preko broja indeksa i/ili imena i prezimena, 
-a može i napredna pretraga po raznim poljima (na primer završena srednja škola)
-ispod forme za pretragu pojavljuje se tabela sa rezultatima iz koje može da se selektuje student i da se učita u posebnu formu 
-u kojoj je moguće pozvati različite akcije za učitanog studenta, na primer generisanje uverenja, pregled položenih ispita, 
-upis ili obnova godine, unos uplate
-
-- forma za unos novog studenta, unose se podaci iz modela (serverski projekat) podeljeni u više tabova
+- učitavanje raznih šifarnika sa servera (studijski programi, zvanja, ...)
+- forma za unos novog studenta, unose se podaci iz modela (serverski projekat) - započeto
+- napredna pretraga studenata po raznim poljima (na primer završena srednja škola)
+- unos i izmena nastavnika
 
 
 
