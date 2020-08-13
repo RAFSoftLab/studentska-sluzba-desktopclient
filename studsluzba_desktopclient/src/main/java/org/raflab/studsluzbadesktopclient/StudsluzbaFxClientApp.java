@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -47,6 +48,7 @@ public class StudsluzbaFxClientApp extends Application {
     @Override
     public void stop() throws Exception {
     	springContext.close();
+    	Platform.exit();
 
     }
     

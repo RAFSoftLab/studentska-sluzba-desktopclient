@@ -1,4 +1,4 @@
-package org.raflab.studsluzba_desktopclient.datamodel;
+package org.raflab.studsluzbadesktopclient.datamodel;
 
 import java.time.LocalDate;
 

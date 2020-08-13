@@ -24,16 +24,14 @@ public class MainView {
 		  FXMLLoader loader = appFXMLLoader.getLoader(MainView.class.getResource("/fxml/main.fxml"));
 		  BorderPane borderPane = loader.load();
 		  this.scene = new Scene(borderPane);
+		  scene.getStylesheets().add(MainView.class.getResource("/css/stylesheet.css").toExternalForm());
 	  } catch (IOException e) {
-	   e.printStackTrace();
+		  e.printStackTrace();
 	  }
 	  return this.scene;
 	 }
 	
-	public Scene getScene() {
-		return scene;
-	}
-	
+		
 	
 	public void changeRoot(String fxml) {
 		FXMLLoader loader = appFXMLLoader.getLoader(MainView.class.getResource("/fxml/"+fxml+".fxml"));
