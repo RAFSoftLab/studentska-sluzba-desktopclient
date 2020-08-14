@@ -1,8 +1,5 @@
 package org.raflab.studsluzbadesktopclient.datamodel;
 
-
-
-
 /**
  * 
  * Entiteti za tabelu - rezultat pretrage studenta

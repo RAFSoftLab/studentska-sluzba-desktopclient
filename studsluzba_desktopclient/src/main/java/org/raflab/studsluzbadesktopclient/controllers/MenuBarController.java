@@ -5,10 +5,7 @@ import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentModel;
 import org.raflab.studsluzbadesktopclient.servercalls.StudentServiceConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import com.jfoenix.controls.JFXTextField;
 
@@ -16,8 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 @Component
 public class MenuBarController { 

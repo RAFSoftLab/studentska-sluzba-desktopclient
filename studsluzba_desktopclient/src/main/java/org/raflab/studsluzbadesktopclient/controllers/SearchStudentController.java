@@ -1,34 +1,47 @@
-package org.raflab.studsluzbadesktopclient.controllers;
+ package org.raflab.studsluzbadesktopclient.controllers;
 
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.Resources;
 
 import org.raflab.studsluzbadesktopclient.MainView;
+import org.raflab.studsluzbadesktopclient.coders.SimpleCode;
+import org.raflab.studsluzbadesktopclient.coders.impl.StudijskiProgramiCoder;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentDTO;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentModel;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentPodaci;
+import org.raflab.studsluzbadesktopclient.servercalls.SifarniciServisConsumer;
 import org.raflab.studsluzbadesktopclient.servercalls.StudentServiceConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 @Component
 public class SearchStudentController {
 	
 	@Autowired
-	private StudentServiceConsumer serviceConsumer;
+	StudentServiceConsumer serviceConsumer;
+	
+	
+	@Autowired	
+	SifarniciServisConsumer codersServiceConsumer;
 	
 	@Autowired
 	StudentProfileController studentProfileController;
+	
+	@Autowired
+	StudijskiProgramiCoder studProgramiCoder;
 	
 	@Autowired
 	MainView mainView;
@@ -36,11 +49,13 @@ public class SearchStudentController {
 	@FXML TextField imeTf;
 	@FXML TextField prezimeTf;
 	@FXML TextField godinaUpisaTf;
-	@FXML ComboBox<String> studProgramCb;
+	@FXML ComboBox<SimpleCode> studProgramCb;
 	@FXML TextField brojIndeksaTf;
 	
 	
 	@FXML TableView<StudentDTO> studentiTable;
+	
+	
 	
 		
 	public void handleSearchStudent(ActionEvent ae) {
@@ -50,7 +65,7 @@ public class SearchStudentController {
 		List<StudentDTO> rez = serviceConsumer.searchStudent(imeTf.getText().equals("") ? null : imeTf.getText(), 
 									  prezimeTf.getText().equals("") ? null : prezimeTf.getText(), 
 									  godinaUpisaTf.getText().equals("") ? null : Integer.parseInt(godinaUpisaTf.getText()),
-									  studProgramCb.getValue(),
+									  studProgramCb.getValue().getCode(),
 									  brojIndeksaTf.getText().equals("") ? null :Integer.parseInt(brojIndeksaTf.getText()));
 		studentiTable.setItems(FXCollections.observableArrayList(rez));
 		
@@ -73,6 +88,13 @@ public class SearchStudentController {
 		
 		
 	}
+	
+	@FXML
+    public void initialize() {		
+		studProgramiCoder.loadCodes();
+		studProgramCb.setItems(FXCollections.observableArrayList(studProgramiCoder.getCodes()));
+    }
+	
 	
 	
 	/*
