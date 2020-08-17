@@ -4,11 +4,39 @@ public enum CoderType {
 	
 	MESTO,
 	DRZAVLJANSTVO,
+	DRZAVA (TextFileSimpleCoder.class,"coders/drzave.txt"),
 	SREDNJA_SKOLA,
 	VISOKOSKOLSKA_USTANOVA,
 	NASTAVNO_ZVANJE,
-	VRSTA_STUDIJA,
+	VRSTA_STUDIJA ,
 	UZA_NAUCNA_OBLAST,
-	ISPITNI_ROK
-
+	STUDIJSKI_PROGRAM (BackendSimpleCoder.class, "studprogram/oznaka"),
+	ISPITNI_ROK;
+	
+	private CoderType(Class<? extends Coder<? extends AbstractCode>> klasa, String path) {
+		this.tip = klasa;
+		this.path = path;
+	}
+	
+	private CoderType() {
+		
+	}
+	
+	public Class<? extends Coder<? extends AbstractCode>> getTip() {
+		return tip;
+	}
+	public void setTip(Class<? extends Coder<? extends AbstractCode>> tip) {
+		this.tip = tip;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
+	}
+	private Class<? extends Coder<? extends AbstractCode>> tip;
+	private String path; // fajl za tekst file codere ili REST path za backend sifarnike
+	
+	
+	
 }

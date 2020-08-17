@@ -4,7 +4,8 @@ import java.time.LocalDate;
 
 
 public class StudentPodaci {	
-	
+		
+		private Long id;
 	    private String ime;	  // not null
 		private String prezime;  // not null
 		private String srednjeIme;   // not null 
@@ -21,8 +22,8 @@ public class StudentPodaci {
 		private String email;  // not null
 		private String brojLicneKarte; 
 		private String licnuKartuIzdao;
-		private String mestoStanovanjaCode;
-		private String adresaStanovanja;
+		private String mestoStanovanjaCode;   //
+		private String adresaStanovanja;   // u toku studija	
 	
 		 
 		 
@@ -134,6 +135,13 @@ public class StudentPodaci {
 		}
 		public void setAdresaStanovanja(String adresaStanovanja) {
 			this.adresaStanovanja = adresaStanovanja;
+		}
+						
+		public Long getId() {
+			return id;
+		}
+		public void setId(Long id) {
+			this.id = id;
 		}
 		@Override
 		public String toString() {

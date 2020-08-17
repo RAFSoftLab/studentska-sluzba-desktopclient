@@ -31,13 +31,13 @@ public class StudentServiceConsumer {
 	
 	private final String STUDENT_URL_PATH = "/student"; 
 	
-	public String saveStudent(@RequestBody StudentPodaci sp) {
+	public Long saveStudent(@RequestBody StudentPodaci sp) {
 	      HttpHeaders headers = new HttpHeaders();
 	      headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 	      HttpEntity <StudentPodaci> entity = new HttpEntity<StudentPodaci>(sp, headers);
 	      
 	      return restTemplate.exchange
-	    		  (createURL("add"), HttpMethod.POST, entity, String.class).getBody();
+	    		  (createURL("add"), HttpMethod.POST, entity, Long.class).getBody();
 	}
 	
 	private String createURL(String pathEnd) {
@@ -68,8 +68,7 @@ public class StudentServiceConsumer {
 	}
 	
 	public StudentIndeks getIndeksById(Long id) {  	     	      	
-	      UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(createURL("getindeks"))
-	    		  .queryParam("id", id);
+	      UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(createURL("indeks")+"/"+id);	    		  
 	      ResponseEntity<StudentIndeks> response = restTemplate.getForEntity(builder.toUriString(), StudentIndeks.class, HttpMethod.GET);
 	      if(response.getStatusCode()==HttpStatus.OK)
 	    	  return response.getBody();
@@ -77,8 +76,7 @@ public class StudentServiceConsumer {
 	}
 	
 	public StudentPodaci getStudentById(Long id) {  	     	      	
-	      UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(createURL("getstudent"))
-	    		  .queryParam("id", id);
+	      UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(createURL("podaci")+"/"+id);	    		  
 	      ResponseEntity<StudentPodaci> response = restTemplate.getForEntity(builder.toUriString(), StudentPodaci.class, HttpMethod.GET);
 	      if(response.getStatusCode()==HttpStatus.OK)
 	    	  return response.getBody();

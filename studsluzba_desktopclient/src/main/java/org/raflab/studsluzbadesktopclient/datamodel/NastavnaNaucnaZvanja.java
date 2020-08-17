@@ -1,6 +1,14 @@
 package org.raflab.studsluzbadesktopclient.datamodel;
 
-public class NastavnaNaucnaZvanja {
+import org.raflab.studsluzbadesktopclient.coders.SimpleCode;
+
+public class NastavnaNaucnaZvanja extends SimpleCode {
+	
+	public NastavnaNaucnaZvanja(String zvanje) {
+		super(zvanje);
+		this.zvanje = zvanje;
+		// TODO Auto-generated constructor stub
+	}
 	
 	private Long id;
 	private String zvanje;

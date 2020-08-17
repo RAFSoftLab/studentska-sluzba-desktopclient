@@ -1,8 +1,14 @@
 package org.raflab.studsluzbadesktopclient.datamodel;
 
-public class StudijskiProgram {	
+import org.raflab.studsluzbadesktopclient.coders.SimpleCode;
+
+public class StudijskiProgram extends SimpleCode {	
 		
-	    private Long id;
+	    public StudijskiProgram(String oznaka) {
+		super(oznaka);
+		
+	}
+		private Long id;
 		private String oznaka;  // RN, RM   
 		private String naziv;   
 		private int godinaAkreditacije;

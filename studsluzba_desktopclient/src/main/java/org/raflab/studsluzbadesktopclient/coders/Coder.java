@@ -2,6 +2,7 @@ package org.raflab.studsluzbadesktopclient.coders;
 
 import java.util.List;
 
+
 public abstract class Coder<T extends AbstractCode>{
 	
 		

@@ -1,15 +1,11 @@
  package org.raflab.studsluzbadesktopclient.controllers;
 
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.Resources;
 
 import org.raflab.studsluzbadesktopclient.MainView;
+import org.raflab.studsluzbadesktopclient.coders.CoderFactory;
+import org.raflab.studsluzbadesktopclient.coders.CoderType;
 import org.raflab.studsluzbadesktopclient.coders.SimpleCode;
-import org.raflab.studsluzbadesktopclient.coders.impl.StudijskiProgramiCoder;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentDTO;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentModel;
@@ -22,7 +18,6 @@ import org.springframework.stereotype.Component;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -41,8 +36,9 @@ public class SearchStudentController {
 	StudentProfileController studentProfileController;
 	
 	@Autowired
-	StudijskiProgramiCoder studProgramiCoder;
+	CoderFactory coderFactory;
 	
+		
 	@Autowired
 	MainView mainView;
 	
@@ -65,7 +61,7 @@ public class SearchStudentController {
 		List<StudentDTO> rez = serviceConsumer.searchStudent(imeTf.getText().equals("") ? null : imeTf.getText(), 
 									  prezimeTf.getText().equals("") ? null : prezimeTf.getText(), 
 									  godinaUpisaTf.getText().equals("") ? null : Integer.parseInt(godinaUpisaTf.getText()),
-									  studProgramCb.getValue().getCode(),
+									  studProgramCb.getValue()==null ? null : studProgramCb.getValue().getCode(),
 									  brojIndeksaTf.getText().equals("") ? null :Integer.parseInt(brojIndeksaTf.getText()));
 		studentiTable.setItems(FXCollections.observableArrayList(rez));
 		
@@ -91,19 +87,13 @@ public class SearchStudentController {
 	
 	@FXML
     public void initialize() {		
-		studProgramiCoder.loadCodes();
-		studProgramCb.setItems(FXCollections.observableArrayList(studProgramiCoder.getCodes()));
+		List<SimpleCode> studProgramiCodes = coderFactory.getSimpleCoder(CoderType.STUDIJSKI_PROGRAM).getCodes();
+		studProgramCb.setItems(FXCollections.observableArrayList(studProgramiCodes));
     }
 	
 	
 	
-	/*
-	@FXML TableColumn<StudentDTO, String> imeColumn;
-	@FXML TableColumn<StudentDTO, String> prezimeColumn;
-	@FXML TableColumn<StudentDTO, Integer> godinaUpisaColumn;
-	@FXML TableColumn<StudentDTO, String> studProgramColumn;
-	@FXML TableColumn<StudentDTO, Integer> brojColumn;
-	*/
+	
 	
 
 }
