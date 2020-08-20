@@ -15,9 +15,10 @@ Urađeno
 - JavaFX - Spring Boot integracija
 - osnovna ekranska forma, meni,  brza pretraga po indeksu (skraćeno), pretraga po imenu, prezimenu i elementima indeksa
 - otvaranje profila studenta posle pretrage
+- okvir za rad sa raznim vrstama sifarnika (mesta, drzave, zvanja, srednje skole)
 
 Uraditi
-- učitavanje raznih šifarnika sa servera (studijski programi, zvanja, ...)
+
 - forma za unos novog studenta, unose se podaci iz modela (serverski projekat) - započeto
 - napredna pretraga studenata po raznim poljima (na primer završena srednja škola)
 - unos i izmena nastavnika
