@@ -27,7 +27,7 @@
 		<Button styleClass="sidebar-button" text="Predmeti" />
 		<Button styleClass="sidebar-button" text="Ispiti" />
 		<Button styleClass="sidebar-button" text="Upis godine" />
-		<Button styleClass="sidebar-button" text="Izveštaji" />
+		<Button styleClass="sidebar-button" text="Uverenja" />
 	</VBox>
 </left>
 	</BorderPane>

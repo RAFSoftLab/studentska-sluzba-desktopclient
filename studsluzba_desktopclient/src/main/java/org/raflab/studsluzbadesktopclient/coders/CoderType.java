@@ -2,10 +2,10 @@ package org.raflab.studsluzbadesktopclient.coders;
 
 public enum CoderType {
 	
-	MESTO,
+	MESTO(TextFileSimpleCoder.class,"coders/mesta.txt"),
 	DRZAVLJANSTVO,
 	DRZAVA (TextFileSimpleCoder.class,"coders/drzave.txt"),
-	SREDNJA_SKOLA,
+	TIP_SREDNJE_SKOLE(TextFileSimpleCoder.class,"coders/tipsrednjeskole.txt"),
 	VISOKOSKOLSKA_USTANOVA,
 	NASTAVNO_ZVANJE,
 	VRSTA_STUDIJA ,

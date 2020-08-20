@@ -1,6 +1,7 @@
 package org.raflab.studsluzbadesktopclient.coders;
 
-// srednja skola ili viskoskolska ustanova
+// srednja skola ili viskoskolska ustanova kao sifra
+// za sada se ne koristi
 public class ObrazovnaInstitucijaCode extends AbstractCode {
 	
 	public ObrazovnaInstitucijaCode(String code) {
@@ -8,13 +9,13 @@ public class ObrazovnaInstitucijaCode extends AbstractCode {
 	}
 
 	private String naziv;
-	private SimpleCodeValue mesto;
+	private String mesto;
 	private String adresa;
 	private TipObrazovneInstitucije tip;
 
 	@Override
 	public String getValue() {		
-		return this.naziv+", "+mesto.getValue();
+		return this.naziv+", "+mesto;
 	}
 	
 	

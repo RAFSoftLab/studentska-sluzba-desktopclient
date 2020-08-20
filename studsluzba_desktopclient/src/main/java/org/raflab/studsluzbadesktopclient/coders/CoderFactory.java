@@ -1,5 +1,8 @@
 package org.raflab.studsluzbadesktopclient.coders;
 
+import java.util.List;
+
+import org.raflab.studsluzbadesktopclient.datamodel.SrednjaSkola;
 import org.raflab.studsluzbadesktopclient.servercalls.SifarniciServisConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,7 +15,13 @@ public class CoderFactory {
 	
 	private Coder<SimpleCode> studProgramiCoder;
 	private Coder<SimpleCode> drzaveCoder;
+	private Coder<SimpleCode> mestaCoder;
+	private Coder<SimpleCode> tipSrednjeSkole;
 	
+	private List<SrednjaSkola> srednjeSkole;
+	
+	
+	// ucita samo ako nije ucitano
 	public Coder<SimpleCode> getSimpleCoder(CoderType coderType){
 		
 		switch(coderType) {
@@ -25,6 +34,14 @@ public class CoderFactory {
 				if(drzaveCoder==null)
 					drzaveCoder = new TextFileSimpleCoder(coderType.getPath());
 				return drzaveCoder;
+			case MESTO:				
+				if(mestaCoder==null)
+					mestaCoder = new TextFileSimpleCoder(coderType.getPath());
+				return mestaCoder;
+			case TIP_SREDNJE_SKOLE:
+				if(tipSrednjeSkole==null)
+					tipSrednjeSkole = new TextFileSimpleCoder(coderType.getPath());
+				return tipSrednjeSkole;
 			default: return null;
 		}
 			
@@ -32,7 +49,7 @@ public class CoderFactory {
 		
 		/*
 		 * 
-		 * TODO resiti pomocu refleksije 
+		 * 
 		Class<?> c;
 		try {
 			c = Class.forName(coderType.getClass().getName());
@@ -43,9 +60,16 @@ public class CoderFactory {
 			e.printStackTrace();
 			return null;
 		}
-		*/
-		
-		
+		*/			
 	}
+	
+	public List<SrednjaSkola> getSrednjeSkole(boolean useCache){
+		if(!useCache || srednjeSkole==null) {			
+			srednjeSkole = List.of(serviceConsumer.getSrednjeSkole());
+		}
+		return srednjeSkole;
+	}
+	
+	
 
 }

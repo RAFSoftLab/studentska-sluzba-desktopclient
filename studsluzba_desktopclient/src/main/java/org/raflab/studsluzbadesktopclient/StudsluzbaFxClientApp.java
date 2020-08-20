@@ -38,7 +38,8 @@ public class StudsluzbaFxClientApp extends Application {
     	
     	primaryStage.setTitle("RAF Studentska služba");
     	   
-    	MainView mainView = springContext.getBean(MainView.class);    	
+    	MainView mainView = springContext.getBean(MainView.class);
+    	
     	primaryStage.setScene(mainView.createScene());
     	primaryStage.show(); 	
     	

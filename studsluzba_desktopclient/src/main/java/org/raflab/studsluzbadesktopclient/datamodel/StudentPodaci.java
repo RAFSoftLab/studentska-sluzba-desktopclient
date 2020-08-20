@@ -23,7 +23,10 @@ public class StudentPodaci {
 		private String brojLicneKarte; 
 		private String licnuKartuIzdao;
 		private String mestoStanovanjaCode;   //
-		private String adresaStanovanja;   // u toku studija	
+		private String adresaStanovanja;   // u toku studija
+// opstina stanovanja i prebivalista	
+		
+		private PrviUpis prviUpis;
 	
 		 
 		 
@@ -142,6 +145,14 @@ public class StudentPodaci {
 		}
 		public void setId(Long id) {
 			this.id = id;
+		}
+		
+				
+		public PrviUpis getPrviUpis() {
+			return prviUpis;
+		}
+		public void setPrviUpis(PrviUpis prviUpis) {
+			this.prviUpis = prviUpis;
 		}
 		@Override
 		public String toString() {

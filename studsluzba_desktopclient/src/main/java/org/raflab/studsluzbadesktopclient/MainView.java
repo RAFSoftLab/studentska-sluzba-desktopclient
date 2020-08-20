@@ -3,12 +3,14 @@ package org.raflab.studsluzbadesktopclient;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 @Component
 public class MainView {
@@ -23,7 +25,7 @@ public class MainView {
 	  try {		  
 		  FXMLLoader loader = appFXMLLoader.getLoader(MainView.class.getResource("/fxml/main.fxml"));
 		  BorderPane borderPane = loader.load();
-		  this.scene = new Scene(borderPane);
+		  this.scene = new Scene(borderPane,1000,800);
 		  scene.getStylesheets().add(MainView.class.getResource("/css/stylesheet.css").toExternalForm());
 	  } catch (IOException e) {
 		  e.printStackTrace();
@@ -37,6 +39,22 @@ public class MainView {
 		FXMLLoader loader = appFXMLLoader.getLoader(MainView.class.getResource("/fxml/"+fxml+".fxml"));
 		try {
 			scene.setRoot(loader.load());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void openModal(String fxml) {
+		FXMLLoader loader = appFXMLLoader.getLoader(MainView.class.getResource("/fxml/"+fxml+".fxml"));
+		try {
+			Parent parent = loader.load();
+			Scene scene = new Scene(parent, 400, 300);
+	        Stage stage = new Stage();
+	        stage.initModality(Modality.APPLICATION_MODAL);
+	        stage.setScene(scene);
+	        stage.showAndWait();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
