@@ -49,6 +49,10 @@ public class MenuBarController {
 		mainView.changeRoot("newStudent");
 	}
 	
+	public void openNewNastavnik(ActionEvent event) {
+		mainView.changeRoot("newNastavnik");
+	}
+	
 	@FXML
 	public void onEnter(ActionEvent ae){
 		StudentIndeks studentIndeks = studentServiceConsumer.fastSearchByIndeks(fastSearchTf.getText());
