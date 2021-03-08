@@ -8,8 +8,8 @@ import org.raflab.studsluzbadesktopclient.coders.CoderType;
 import org.raflab.studsluzbadesktopclient.coders.SimpleCode;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentDTO;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
-import org.raflab.studsluzbadesktopclient.datamodel.StudentModel;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentPodaci;
+import org.raflab.studsluzbadesktopclient.datamodel.StudentProfileDTO;
 import org.raflab.studsluzbadesktopclient.servercalls.SifarniciServisConsumer;
 import org.raflab.studsluzbadesktopclient.servercalls.StudentServiceConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,18 +69,20 @@ public class SearchStudentController {
 	
 	public void handleOpenProfile(ActionEvent ae) {
 		StudentDTO selected = studentiTable.getSelectionModel().getSelectedItem();
-		StudentIndeks si;
+		StudentProfileDTO studentProfile;
 		if(selected.getGodinaUpisa() == null || selected.getGodinaUpisa()==0) { // nema indeksa
-			StudentPodaci sp = serviceConsumer.getStudentById(selected.getId());
-			si = new StudentIndeks();  // pravi se prazan indeks da bi se otvorio dosije
+			StudentPodaci sp = serviceConsumer.getStudentById(selected.getIdStudentPodaci());
+			StudentIndeks si = new StudentIndeks();  // pravi se prazan indeks da bi se otvorio dosije, prilikom prvog upisa
 			si.setStudent(sp);
-		}else {
-			si = serviceConsumer.getIndeksById(selected.getId());			
+			studentProfile = new StudentProfileDTO(si);
+		}else {			
+			studentProfile = serviceConsumer.getStudentProfile(selected.getIdIndeks());	
+			System.out.println("Polozeni predmeti "+studentProfile.getPolozeniPredmeti().size());
+			
 		}
 		
-		studentProfileController.setStudentModel(new StudentModel(si));
-		mainView.changeRoot("studentProfile");
-		studentProfileController.resetProfile();
+		studentProfileController.setStudentProfile(studentProfile);
+		mainView.changeRoot("studentProfilePodaci");		
 		
 		
 	}

@@ -17,6 +17,7 @@ public class CoderFactory {
 	private Coder<SimpleCode> drzaveCoder;
 	private Coder<SimpleCode> mestaCoder;
 	private Coder<SimpleCode> tipSrednjeSkole;
+	private Coder<SimpleCode> nastavnaZvanja;
 	
 	private List<SrednjaSkola> srednjeSkole;
 	
@@ -40,8 +41,11 @@ public class CoderFactory {
 				return mestaCoder;
 			case TIP_SREDNJE_SKOLE:
 				if(tipSrednjeSkole==null)
-					tipSrednjeSkole = new TextFileSimpleCoder(coderType.getPath());
+					tipSrednjeSkole = new TextFileSimpleCoder(coderType.getPath());				
 				return tipSrednjeSkole;
+			case NASTAVNO_ZVANJE:
+				if(nastavnaZvanja!=null)
+					nastavnaZvanja = new TextFileSimpleCoder(coderType.getPath());
 			default: return null;
 		}
 			

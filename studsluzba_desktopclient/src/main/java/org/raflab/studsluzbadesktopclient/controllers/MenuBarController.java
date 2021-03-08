@@ -2,7 +2,7 @@ package org.raflab.studsluzbadesktopclient.controllers;
 
 import org.raflab.studsluzbadesktopclient.MainView;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
-import org.raflab.studsluzbadesktopclient.datamodel.StudentModel;
+import org.raflab.studsluzbadesktopclient.datamodel.StudentProfileDTO;
 import org.raflab.studsluzbadesktopclient.servercalls.StudentServiceConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -60,9 +60,9 @@ public class MenuBarController {
 			fastSearchError.setText("Student nije pronađen");
 		else {
 			fastSearchError.setText("");	
-			studentProfileController.setStudentModel(new StudentModel(studentIndeks));
-			mainView.changeRoot("studentProfile");
-			studentProfileController.resetProfile();
+			StudentProfileDTO studentProfile = studentServiceConsumer.getStudentProfile(studentIndeks.getId());
+			studentProfileController.setStudentProfile(studentProfile);
+			mainView.changeRoot("studentProfilePodaci");			
 		}
 	}
 	

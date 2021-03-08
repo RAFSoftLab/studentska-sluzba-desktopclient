@@ -21,3 +21,7 @@
 .fastsearch-box{
 	-fx-padding:20px;
 }
+
+.thick {
+  -fx-font-weight: bold;
+}

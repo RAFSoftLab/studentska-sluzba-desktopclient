@@ -7,7 +7,7 @@ public enum CoderType {
 	DRZAVA (TextFileSimpleCoder.class,"coders/drzave.txt"),
 	TIP_SREDNJE_SKOLE(TextFileSimpleCoder.class,"coders/tipsrednjeskole.txt"),
 	VISOKOSKOLSKA_USTANOVA,
-	NASTAVNO_ZVANJE,
+	NASTAVNO_ZVANJE(TextFileSimpleCoder.class,"coders/nastavnasaradnickazvanja.txt"),
 	VRSTA_STUDIJA ,
 	UZA_NAUCNA_OBLAST,
 	STUDIJSKI_PROGRAM (BackendSimpleCoder.class, "studprogram/oznaka"),

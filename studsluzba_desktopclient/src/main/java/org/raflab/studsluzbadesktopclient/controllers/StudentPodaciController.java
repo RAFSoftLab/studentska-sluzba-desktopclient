@@ -2,10 +2,12 @@ package org.raflab.studsluzbadesktopclient.controllers;
 
 import java.util.List;
 
+
 import org.raflab.studsluzbadesktopclient.MainView;
 import org.raflab.studsluzbadesktopclient.coders.CoderFactory;
 import org.raflab.studsluzbadesktopclient.coders.CoderType;
 import org.raflab.studsluzbadesktopclient.coders.SimpleCode;
+import org.raflab.studsluzbadesktopclient.datamodel.PrviUpis;
 import org.raflab.studsluzbadesktopclient.datamodel.SrednjaSkola;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentPodaci;
 import org.raflab.studsluzbadesktopclient.servercalls.StudentServiceConsumer;
@@ -18,6 +20,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+
+import static org.raflab.studsluzbadesktopclient.utils.TextInputUtils.*;
 
 @Component
 public class StudentPodaciController {
@@ -51,7 +55,7 @@ public class StudentPodaciController {
 	@FXML TextField adresaPrebivalistaTf;
 	@FXML ComboBox<SimpleCode> mestoPrebivalistaCb;
 	@FXML TextField adresaStanovanjaTf;
-	// TODO da li i mesta da idu preko sifarnika
+	
 	@FXML ComboBox<SimpleCode> mestoStanovanjaCb;
 	@FXML ComboBox<SimpleCode> mestoRodjenjaCb;
 
@@ -95,28 +99,62 @@ public class StudentPodaciController {
 	
 	public void handleSaveStudent(ActionEvent event) {
 		// TODO dodati validacije za email, brojeve, obavezna polja
+		try {
 		if(studentPodaci == null)
 			studentPodaci = new StudentPodaci();
+		
+		// osnovni podaci
 		studentPodaci.setIme(imeTf.getText());
 		studentPodaci.setPrezime(prezimeTf.getText());
 		studentPodaci.setSrednjeIme(getTextIfNotEmpty(srednjeImeTf));
+		studentPodaci.setJmbg(getTextIfNotEmpty(jmbgTf));
 		studentPodaci.setDatumRodjenja(datumRodjenjaDp.getValue());
+		if(mestoRodjenjaCb.getValue()!=null) studentPodaci.setMestoPrebivalista(mestoRodjenjaCb.getValue().getCode());
+		if(drzavaRodjenjaCb.getValue()!=null) studentPodaci.setDrzavaRodjenja(drzavaRodjenjaCb.getValue().getCode());
+		if(drzavaRodjenjaCb.getValue()!=null) studentPodaci.setDrzavljanstvo(drzavljanstvoCb.getValue().getCode());
+		studentPodaci.setNacionalnost(getTextIfNotEmpty(nacionalnostTf));
+		studentPodaci.setBrojLicneKarte(getTextIfNotEmpty(brojLicneKarteTf));
+		studentPodaci.setLicnuKartuIzdao(getTextIfNotEmpty(licnuKartuIzdaoTf));
+		
+		// kontakt podaci
+		
 		studentPodaci.setEmail(getTextIfNotEmpty(emailTf));
-		studentPodaci.setBrojTelefona(brojTelefonaTf.getText());
+		studentPodaci.setBrojTelefona(getTextIfNotEmpty(brojTelefonaTf));
 		studentPodaci.setAdresa(getTextIfNotEmpty(adresaPrebivalistaTf));
 		studentPodaci.setAdresaStanovanja(getTextIfNotEmpty(adresaStanovanjaTf));
-		studentPodaci.setBrojLicneKarte(getTextIfNotEmpty(brojLicneKarteTf));
-		studentPodaci.setBrojTelefona(getTextIfNotEmpty(brojTelefonaTf));
-		studentPodaci.setDrzavaRodjenjaCode(drzavaRodjenjaCb.getValue().getCode());
-		studentPodaci.setDrzavljanstvoCode(drzavljanstvoCb.getValue().getCode());
-		studentPodaci.setJmbg(getTextIfNotEmpty(jmbgTf));
-		studentPodaci.setLicnuKartuIzdao(getTextIfNotEmpty(licnuKartuIzdaoTf));
+		if(mestoPrebivalistaCb.getValue()!=null) studentPodaci.setMestoPrebivalista(mestoPrebivalistaCb.getValue().getCode());
+		if(mestoStanovanjaCb.getValue()!=null) studentPodaci.setMestoStanovanja(mestoStanovanjaCb.getValue().getCode());
+		
+		
+		// prvi upis
+		PrviUpis pu = null;
+		if(studentPodaci.getPrviUpis()==null) {
+			pu = new PrviUpis();
+			studentPodaci.setPrviUpis(pu);
+		}
+		pu = studentPodaci.getPrviUpis();
+		if(srednjeSkolaCb.getValue()!=null) pu.setZavrsenaSrednjaSkola(srednjeSkolaCb.getValue());
+		pu.setStrucnaSprema(getTextIfNotEmpty(strucnaSpremaTf));
+		pu.setUspehSrednjaSkola(getFloatIfNotEmpty(uspehSrednjaSkolaTf));
+		pu.setUspehPrijemni(getFloatIfNotEmpty(uspehPrijemniTf));
+		pu.setGodinaZavrsetkaSrednjeSkole(getIntIfNotEmpty(godinaZavrsetkaSrednjeSkoleTf));
+		pu.setPrelazSaViskoskolskeUstanove(getTextIfNotEmpty(prelazSaVisokoskolskeUstanoveTf));
+		pu.setPrethodnoZavrseneStudije(getTextIfNotEmpty(prethodnoZavrseneStudijeTf));
+		pu.setVisokoskolsaUstanovaZavrsenihStudija(getTextIfNotEmpty(visokoskolskaUstanovaPrethodnihStudijaTf));
+		pu.setStecenoZvanje(getTextIfNotEmpty(stecenoZvanjeTf));
+		pu.setProsecnaOcenaNaPrethodnimStudijama(getFloatIfNotEmpty(prosecnaOcenaTf));
+		
+		pu.setDatumUpisa(datumUpisaDp.getValue());
+		pu.setNapomena(getTextIfNotEmpty(napomenaTa));
+			
+		}catch(NumberFormatException e) {
+			actionTarget.setText("Greška u formatu unetih podataka");
+		}
 		
 		
 		try {
 			Long id = serviceConsumer.saveStudent(studentPodaci);
-			if(id!=null) {
-				System.out.println(id);
+			if(id!=null) {				
 				actionTarget.setText("Student sačuvan");	
 				studentPodaci.setId(id);
 			}else {
@@ -147,15 +185,12 @@ public class StudentPodaciController {
     }
 	
 	public void handleOpenModalSrednjeSkole(ActionEvent ae) {
-		// TODO kreirati modal window za dodavanje nove srednje skole, mozda i brisanje i promena postojećih ?? strani ključ
+		// TODO brisanje i promena postojećih srednjih skola ?? strani ključ
 		mainView.openModal("addSrednjaSkola");
 		
 	}
 	
-	private String getTextIfNotEmpty(TextField tf) {
-		if(tf.getText().equals("")) return null;
-		else return tf.getText();
-	}
+	
 	
 	public void updateSrednjeSkole() {
 		List<SrednjaSkola> srednjeSkole = coderFactory.getSrednjeSkole(false);

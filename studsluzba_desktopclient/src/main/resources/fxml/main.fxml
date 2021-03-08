@@ -7,9 +7,9 @@
 
 <BorderPane fx:id="mainPane" prefHeight="600" prefWidth="800" xmlns:fx="http://javafx.com/fxml" fx:controller="org.raflab.studsluzbadesktopclient.controllers.MainWindowController">
 
-<center>
+<top>
 	
 	<fx:include source="menuBar.fxml"/>
-</center>
+</top>
 
 </BorderPane>

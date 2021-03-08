@@ -9,6 +9,7 @@ import java.util.Map;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentDTO;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentPodaci;
+import org.raflab.studsluzbadesktopclient.datamodel.StudentProfileDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -38,6 +39,15 @@ public class StudentServiceConsumer {
 	      
 	      return restTemplate.exchange
 	    		  (createURL("add"), HttpMethod.POST, entity, Long.class).getBody();
+	}
+	
+	public Long saveStudentIndeks(@RequestBody StudentIndeks si) {
+	      HttpHeaders headers = new HttpHeaders();
+	      headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+	      HttpEntity <StudentIndeks> entity = new HttpEntity<StudentIndeks>(si, headers);
+	      
+	      return restTemplate.exchange
+	    		  (createURL("addIndeks"), HttpMethod.POST, entity, Long.class).getBody();
 	}
 	
 	private String createURL(String pathEnd) {
@@ -81,6 +91,15 @@ public class StudentServiceConsumer {
 	      if(response.getStatusCode()==HttpStatus.OK)
 	    	  return response.getBody();
 	      else return null;   	    		  
+	}
+	
+	public StudentProfileDTO getStudentProfile(Long id) {
+		 UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(createURL("profile")+"/"+id);	    		  
+	      ResponseEntity<StudentProfileDTO> response = restTemplate.getForEntity(builder.toUriString(), StudentProfileDTO.class, HttpMethod.GET);
+	      if(response.getStatusCode()==HttpStatus.OK)
+	    	  return response.getBody();
+	      else return null;   	  
+		
 	}
 	
 	

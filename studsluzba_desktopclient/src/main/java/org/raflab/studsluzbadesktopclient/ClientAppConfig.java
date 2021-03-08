@@ -5,7 +5,7 @@ import java.util.TimeZone;
 
 import javax.annotation.PostConstruct;
 
-import org.raflab.studsluzbadesktopclient.datamodel.StudentModel;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;

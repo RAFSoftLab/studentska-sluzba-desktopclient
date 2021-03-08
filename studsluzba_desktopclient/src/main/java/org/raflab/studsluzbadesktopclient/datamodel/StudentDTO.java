@@ -2,7 +2,7 @@ package org.raflab.studsluzbadesktopclient.datamodel;
 
 /**
  * 
- * Entiteti za tabelu - rezultat pretrage studenta
+ * Entiteti za tabelu sa rezultatima pretrage
  * @author bojanads
  *
  */
@@ -10,12 +10,31 @@ package org.raflab.studsluzbadesktopclient.datamodel;
 
 public class StudentDTO {
 	
-	private Long id;
+	private Long idIndeks;
+	private Long idStudentPodaci;
+	// dodati jos nesto?
 	private String ime;
-	private String prezime;	
-	private Integer godinaUpisa;
+	private String prezime; 
+	// indeks
+	private int godinaUpisa;
 	private String studProgram;
-	private Integer broj;
+	private int broj;
+	
+	
+	
+	
+	public Long getIdIndeks() {
+		return idIndeks;
+	}
+	public void setIdIndeks(Long idIndeks) {
+		this.idIndeks = idIndeks;
+	}
+	public Long getIdStudentPodaci() {
+		return idStudentPodaci;
+	}
+	public void setIdStudentPodaci(Long idStudentPodaci) {
+		this.idStudentPodaci = idStudentPodaci;
+	}
 	
 	public String getIme() {
 		return ime;
@@ -47,12 +66,7 @@ public class StudentDTO {
 	public void setBroj(Integer broj) {
 		this.broj = broj;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 	
 	
 	

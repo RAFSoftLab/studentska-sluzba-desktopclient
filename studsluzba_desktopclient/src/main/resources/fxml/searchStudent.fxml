@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.SearchStudentController">
+<BorderPane  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.SearchStudentController">
 
 <top>
 	<fx:include source="menuBar.fxml" />

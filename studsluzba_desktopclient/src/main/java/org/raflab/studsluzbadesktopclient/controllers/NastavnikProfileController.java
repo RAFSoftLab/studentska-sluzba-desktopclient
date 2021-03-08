@@ -1,7 +1,6 @@
 package org.raflab.studsluzbadesktopclient.controllers;
 
 import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
-import org.raflab.studsluzbadesktopclient.datamodel.StudentModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

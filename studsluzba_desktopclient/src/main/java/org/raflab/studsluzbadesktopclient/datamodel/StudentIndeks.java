@@ -1,6 +1,7 @@
 package org.raflab.studsluzbadesktopclient.datamodel;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class StudentIndeks{
 	
@@ -11,6 +12,8 @@ public class StudentIndeks{
 	private String studProgram;
 	private boolean aktivan; // aktivan
 	private LocalDate vaziOd;
+	private StudentPodaci student;
+	
 	
 	public Long getId() {
 		return id;
@@ -68,8 +71,7 @@ public class StudentIndeks{
 		this.student = student;
 	}
 
-	private StudentPodaci student;
-	//private List<PolozenPredmet> polozeniPredmeti;
+	
 	
 	@Override
 	public String toString() {
