@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+
+<GridPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" vgap="10" fx:controller="org.raflab.studsluzbadesktopclient.controllers.AddIndeksModalController">
+	 <GridPane alignment="center" hgap="10" vgap="10">
+         	<Label text="Broj indeksa" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+		   	<TextField fx:id="brojIndeksaTf"  GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+		   	<Label text="Studijski program" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+		   	<ComboBox fx:id="studijskiProgramCb"   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+		   	<Label text="Godina upisa" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2"/>		   	
+		   	<TextField fx:id="godinaUpisaTf" GridPane.columnIndex="1" GridPane.rowIndex="2"/>	
+		   	<Button onAction="#setIndeks" text="Unesi" GridPane.columnIndex="1" GridPane.rowIndex="3"/>	   	
+     </GridPane>		 
+	
+
+
+</GridPane>

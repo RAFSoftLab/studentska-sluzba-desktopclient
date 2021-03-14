@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.StudentProfileController">
+
+<top>
+	<fx:include source="menuBar.fxml" />
+</top>
+
+<left >
+	   
+	<fx:include source="studentProfileSideBar.fxml" />
+	
+</left>
+
+<center>
+
+
+<GridPane hgap="8" vgap="8" alignment="CENTER">
+
+	       
+    <Label text="Ime i prezime" styleClass="thick"  GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <Label text="JMBG" styleClass="thick" GridPane.halignment="RIGHT" GridPane.columnIndex="0"  GridPane.rowIndex="1" />
+    <Label text="Datum rođenja" styleClass="thick" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <Label text="Mesto prebivališta" styleClass="thick" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+    <Label text="Adresa" styleClass="thick" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+    <Label text="Broj telefona" styleClass="thick" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+    <Label text="Email" styleClass="thick" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+    
+    
+    <Label text="" fx:id="imeIPrezimeLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+    <Label text="" fx:id="jmbgLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Label text="" fx:id="datumRodjenjaLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Label text="" fx:id="mestoPrebivalistaLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <Label text="" fx:id="adresaLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <Label text="" fx:id="brojTelefonaLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <Label text="" fx:id="emailLabel" GridPane.columnIndex="1" GridPane.rowIndex="6" />   
+       
+</GridPane>
+</center>
+<right>
+	<fx:include source="studentProfileRightBar.fxml" />
+</right>
+</BorderPane>  

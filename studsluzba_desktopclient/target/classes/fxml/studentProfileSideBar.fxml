@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox prefWidth="150" fx:id="studentProfileSideBar" styleClass="sidebar-box" stylesheets="@../css/stylesheet.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.StudentProfileSideBarController">
+	<Button contentDisplay="RIGHT" styleClass="sidebar-button" minWidth="150" text="Podaci" onAction="#handleOpenProfilePodaci"/>
+	<Button styleClass="sidebar-button" text="Predmeti" minWidth="150"/>
+	<Button styleClass="sidebar-button" text="Položeni predmeti"  minWidth="150" onAction="#handleOpenProfilePolozeniPredmeti"/>
+	<Button styleClass="sidebar-button" text="Prijavljeni ispiti" minWidth="150"/>	
+	<Button styleClass="sidebar-button" text="Upis/obnove godine" minWidth="150"   onAction="#handleOpenProfileUpisObnove"/>
+	<Button styleClass="sidebar-button" text="Uplate" minWidth="150" />
+	<Button styleClass="sidebar-button" text="Uverenja" minWidth="150"/>
+</VBox>

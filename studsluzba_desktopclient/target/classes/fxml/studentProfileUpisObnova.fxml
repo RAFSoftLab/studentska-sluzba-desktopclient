@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+
+
+<BorderPane stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.StudentProfileUpisObnovaController">
+
+<top>
+	<fx:include source="menuBar.fxml" />
+</top>
+
+<left>   
+	<fx:include source="studentProfileSideBar.fxml" />
+</left>
+	
+
+
+<center>
+	<BorderPane>
+		
+		<center>
+			<VBox spacing="10" alignment="CENTER">			
+	   		<padding>
+	        	<Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+	    	</padding>
+	    	<Label text="Tok studija"/> 
+			<TableView fx:id="tokStudijaTable" maxHeight="200" prefWidth="700">									
+				     <columns>
+				     	  <TableColumn maxWidth="100.0" text="Vrsta">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="vrsta" />
+			                 </cellValueFactory>
+				          </TableColumn>		
+				     	  <TableColumn maxWidth="100.0"  text="Datum">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="datum" />
+			                 </cellValueFactory>
+				          </TableColumn>					           
+				          <TableColumn  maxWidth="100.0" text="Godina">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="godina" />
+			                 </cellValueFactory>
+				          </TableColumn>				        
+				           <TableColumn maxWidth="200.0" text="Napomena">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="napomena" />
+			                 </cellValueFactory>
+				          </TableColumn>	
+				           
+				      </columns>  
+			</TableView>
+			<HBox alignment="CENTER" spacing="10">
+					<padding>
+	        			<Insets bottom="40.0" left="20.0" right="20.0" top="10.0" />
+	    			</padding>
+					<Button text="Novi upis" onAction="#handleOpenUpisModal"/>
+					<Button text="Novi obnova" onAction="#handleOpenObnovaModal"/>  				
+				</HBox>
+			</VBox>
+			</center>		
+			
+		</BorderPane>
+
+</center>
+<right>
+	<fx:include source="studentProfileRightBar.fxml" />
+
+</right>
+
+
+</BorderPane>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.StudentProfileObnovaModalController">
+  
+   <center>
+   
+     <GridPane hgap="7" vgap = "7" alignment="CENTER">
+			
+			<Label text="Datum" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+			<DatePicker fx:id="datum"  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+			
+			<Label text="Godina" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+			<TextField fx:id="godina"  GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+			
+			<Label text="Napomena" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+			<TextArea fx:id="napomena"  GridPane.columnIndex="1" GridPane.rowIndex="3" maxHeight="120" maxWidth="250"/>
+			
+			<Label text="Napomena" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+			<ListView fx:id="listaNepolozeni" GridPane.halignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4" maxHeight="100"/> 
+			
+			<Label text="Ukupno ESPB:" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+			<TextField fx:id="ukupnoEspbTf"   GridPane.halignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+			
+			<Label text="Uplata (iznos)" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+			<TextField fx:id="uplataIznos"  GridPane.columnIndex="1" GridPane.rowIndex="6"/>				
+		</GridPane>			
+   </center>
+   <bottom>
+   		<HBox alignment="CENTER">
+   			<padding>
+	        	<Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
+	    	</padding>
+   			<Button text = "Sačuvaj" onAction="#handleSacuvajObnovu" />
+   		</HBox>
+   
+   </bottom>
+</BorderPane>

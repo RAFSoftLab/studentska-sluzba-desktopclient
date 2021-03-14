@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.MenuBarController">
+   
+        <MenuBar fx:id="menuBar" style="-fx-background-color: #ADD8E6;">
+            <Menu text="Studenti">
+                <items>
+                    <MenuItem onAction="#openSearchStudent" text="Pretraži" />   
+                    <MenuItem onAction="#openNewStudent" text="Novi" />   
+                    <MenuItem text="Grupe" />                 
+                            
+                    
+                </items>                           
+            </Menu>
+            <Menu text="Nastavnici">
+                <items>
+                	<MenuItem onAction="#openSearchNastavnik" text="Pretraži" />
+                	                               
+                    <MenuItem onAction="#openNewNastavnik" text="Novi" />                  
+                </items>                          
+            </Menu>
+            <Menu text="Predmeti">
+                <items>
+                	<MenuItem text="Studijski programi" />                                   
+                    <MenuItem text="Predmeti" />                  
+                </items>                          
+            </Menu>
+            <Menu text="Nastava i ispiti">
+                <items>
+                	<MenuItem text="Raspodela nastave" onAction = "#openRaspodelaNastave" /> 
+                	<MenuItem text="Raspodela nastave - studenti" />          
+                	<MenuItem text="Ispitni rokovi" />                                   
+                    <MenuItem text="Ispiti" />                    
+                </items>                          
+            </Menu>
+            
+            <Menu text="Administracija">
+                <items>
+                    <MenuItem text="Šifarnici" />               
+                    <MenuItem onAction="#openSkolskaGodina" text="Školska godina"  />               
+                    <MenuItem text="Korisnici" />
+                </items>                          
+            </Menu>
+        </MenuBar>
+        
+        <HBox>
+      		<JFXTextField fx:id="fastSearchTf" onAction="#onEnter" />
+				
+      		<JFXButton prefHeight="18.0" prefWidth="44.0" text=" " onAction="#handleFastSearch">
+	         <graphic>
+	            <ImageView fitHeight="25.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+	               <image>
+	                  <Image url="@img/lupa.png" />
+	               </image>
+	            </ImageView>
+	         </graphic>
+	      </JFXButton>
+	      <Label fx:id="fastSearchError" alignment="CENTER" prefHeight="34.0" prefWidth="222.0" text=" " textAlignment="CENTER" textFill="#de0b0b">	        
+	      </Label>
+	      <padding>
+	         <Insets left="10.0"  />
+	      </padding>   
+	      
+	      	<Label text = "" fx:id="aktivnaSkolskaGodinaLabel" alignment="CENTER_RIGHT" />
+	      
+	      
+	         
+	       </HBox> 
+    
+</VBox>
