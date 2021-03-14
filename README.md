@@ -16,12 +16,14 @@ Urađeno
 - osnovna ekranska forma, meni,  brza pretraga po indeksu (skraćeno), pretraga po imenu, prezimenu i elementima indeksa
 - otvaranje profila studenta posle pretrage
 - okvir za rad sa raznim vrstama sifarnika (mesta, drzave, zvanja, srednje skole)
+- unos novog studenta i otvaranje profila sa unosom indeksa
+- profil studenta: pregeld podataka, položenih predmeta i toka studija (upis i obnova)
 
 Uraditi
 
-- forma za unos novog studenta, unose se podaci iz modela (serverski projekat) - započeto
+- unos upisa i obnove godine, sa pregeldom prenetih/upisanih godina - započeto
 - napredna pretraga studenata po raznim poljima (na primer završena srednja škola)
-- unos i izmena nastavnika
+- unos i izmena nastavnika, unos zvanja - započeto
 
 
 
