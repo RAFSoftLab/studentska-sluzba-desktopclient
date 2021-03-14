@@ -3,7 +3,7 @@ package org.raflab.studsluzbadesktopclient.coders;
 import java.util.List;
 
 import org.raflab.studsluzbadesktopclient.datamodel.SrednjaSkola;
-import org.raflab.studsluzbadesktopclient.servercalls.SifarniciServisConsumer;
+import org.raflab.studsluzbadesktopclient.servercalls.SifarniciServiceConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class CoderFactory {
 	
 	@Autowired
-	SifarniciServisConsumer serviceConsumer;
+	SifarniciServiceConsumer serviceConsumer;
 	
 	private Coder<SimpleCode> studProgramiCoder;
 	private Coder<SimpleCode> drzaveCoder;

@@ -14,12 +14,13 @@ public class Predmet {
 	private String sifra;
 	private String naziv;
 	private String opis;
-	private Integer ESPB;
+	private Integer espb;
 	private Integer semestar;
 	private Integer godinaStudija; // izracunava se na osnovu semestra	
 	private StudijskiProgram studProgram;
 	private Integer fondPredavanja;
 	private Integer fondVezbe;
+	private Boolean obavezan;
 	
 	
 
@@ -47,11 +48,11 @@ public class Predmet {
 	public void setOpis(String opis) {
 		this.opis = opis;
 	}
-	public Integer getESPB() {
-		return ESPB;
+	public Integer getEspb() {
+		return espb;
 	}
-	public void setESPB(Integer eSPB) {
-		ESPB = eSPB;
+	public void setEspb(Integer espb) {
+		this.espb = espb;
 	}
 	public Integer getSemestar() {
 		return semestar;
@@ -83,11 +84,14 @@ public class Predmet {
 	public void setFondVezbe(Integer fondVezbe) {
 		this.fondVezbe = fondVezbe;
 	}
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((sifra == null) ? 0 : sifra.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 	@Override
@@ -99,14 +103,24 @@ public class Predmet {
 		if (getClass() != obj.getClass())
 			return false;
 		Predmet other = (Predmet) obj;
-		if (sifra == null) {
-			if (other.sifra != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!sifra.equals(other.sifra))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+	public Boolean getObavezan() {
+		return obavezan;
+	}
+	public void setObavezan(Boolean obavezan) {
+		this.obavezan = obavezan;
 	}		
 	
+	@Override
+	public String toString() {
+		return "["+ this.sifra + "] " + this.naziv + " ESPB:"+this.espb + " "+studProgram.getOznaka()+" ["+studProgram.getGodinaAkreditacije()+"]";
+	}
 	
 	
 }

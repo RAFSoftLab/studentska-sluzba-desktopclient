@@ -6,7 +6,7 @@ import org.raflab.studsluzbadesktopclient.coders.CoderFactory;
 import org.raflab.studsluzbadesktopclient.coders.CoderType;
 import org.raflab.studsluzbadesktopclient.coders.SimpleCode;
 import org.raflab.studsluzbadesktopclient.datamodel.SrednjaSkola;
-import org.raflab.studsluzbadesktopclient.servercalls.SifarniciServisConsumer;
+import org.raflab.studsluzbadesktopclient.servercalls.SifarniciServiceConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import javafx.fxml.FXML;
@@ -24,7 +24,7 @@ public class AddSrednjaSkolaController {
 	CoderFactory coderFactory;
 	
 	@Autowired
-	SifarniciServisConsumer serviceConsumer;
+	SifarniciServiceConsumer serviceConsumer;
 	
 	@Autowired
 	StudentPodaciController  studentpodaciController;

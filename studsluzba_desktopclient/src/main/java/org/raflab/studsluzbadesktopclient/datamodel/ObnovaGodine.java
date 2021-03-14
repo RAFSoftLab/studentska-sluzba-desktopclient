@@ -1,6 +1,7 @@
 package org.raflab.studsluzbadesktopclient.datamodel;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 
@@ -10,14 +11,17 @@ public class ObnovaGodine {
 
 	private Long id;
 	
+	private StudentIndeks studentIndeks;
+	
 	private int godinaKojuObnavlja;	
 
-	private Set<Predmet> upisujePredmete;
+	private List<Predmet> upisujePredmete;
 	
 	private LocalDate datumObnove;	
 	
 	private String napomena;
 	
+	private SkolskaGodina skolskaGodina;
 	
 	public Long getId() {
 		return id;
@@ -31,10 +35,10 @@ public class ObnovaGodine {
 	public void setGodinaKojuObnavlja(int godinaKojuObnavlja) {
 		this.godinaKojuObnavlja = godinaKojuObnavlja;
 	}
-	public Set<Predmet> getUpisujePredmete() {
+	public List<Predmet> getUpisujePredmete() {
 		return upisujePredmete;
 	}
-	public void setUpisujePredmete(Set<Predmet> upisujePredmete) {
+	public void setUpisujePredmete(List<Predmet> upisujePredmete) {
 		this.upisujePredmete = upisujePredmete;
 	}	
 	
@@ -49,6 +53,18 @@ public class ObnovaGodine {
 	}
 	public void setNapomena(String napomena) {
 		this.napomena = napomena;
+	}
+	public SkolskaGodina getSkolskaGodina() {
+		return skolskaGodina;
+	}
+	public void setSkolskaGodina(SkolskaGodina skolskaGodina) {
+		this.skolskaGodina = skolskaGodina;
+	}
+	public StudentIndeks getStudentIndeks() {
+		return studentIndeks;
+	}
+	public void setStudentIndeks(StudentIndeks studentIndeks) {
+		this.studentIndeks = studentIndeks;
 	}
 	
 	

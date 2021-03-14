@@ -66,7 +66,7 @@ public class PolozenPredmet {
 	}
 	
 	public int getEspb() {
-		return predmet.getESPB();
+		return predmet.getEspb();
 	}
 	
 	

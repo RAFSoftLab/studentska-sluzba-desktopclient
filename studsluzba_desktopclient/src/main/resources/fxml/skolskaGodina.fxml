@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+
+<BorderPane  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.SkolskaGodinaController">
+
+<top>
+	<fx:include source="menuBar.fxml" />
+</top>
+   <center>
+   	<VBox alignment="CENTER">			
+	   		<padding>
+	        	<Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+	    	</padding>	    	
+			<TableView fx:id="skolskaGodineTable" maxHeight="200" maxWidth="500">
+				 <columns>
+				     	  <TableColumn maxWidth="100.0" prefWidth="150" text="Godina">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="godinaStr" />
+			                 </cellValueFactory>
+				          </TableColumn>
+				          <TableColumn maxWidth="150.0" text="Datum početka">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="datumPocetka" />
+			                 </cellValueFactory>
+				          </TableColumn>				
+				          <TableColumn maxWidth="100.0"  text="Aktivna">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="aktivnaStr" />
+			                 </cellValueFactory>
+				          </TableColumn>		
+				   </columns>
+			</TableView>
+			</VBox>										
+   </center>
+   <bottom>
+   		<VBox alignment="TOP_CENTER" >			
+	   		<padding>
+	        	<Insets bottom="100.0" left="20.0" right="20.0" top="10.0" />
+	    	</padding>	  
+	   	    <GridPane hgap="7" vgap = "7" alignment="CENTER">
+				
+				<Label text="Godina" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+				<TextField fx:id="pocetnaGodinaTf"  GridPane.columnIndex="1" GridPane.rowIndex="0" />
+				<TextField fx:id="krajnjaGodinaTf"  GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+				
+				<Label text="Datum početka" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>			
+				<DatePicker fx:id="datumPocetnaDp"  GridPane.columnIndex="1" GridPane.rowIndex="1"/>		
+				
+				<CheckBox fx:id="aktivnaChB" text="Aktivna" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+				<Button text="Sačuvaj" onAction="#handleSacuvajSkolskaGodina" GridPane.columnIndex="1" GridPane.rowIndex="3"/>				
+				
+			</GridPane>
+			
+			
+		</VBox>		
+   
+   </bottom>
+</BorderPane>
+   

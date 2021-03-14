@@ -1,6 +1,11 @@
 package org.raflab.studsluzbadesktopclient.controllers;
 
+import java.util.List;
+
 import org.raflab.studsluzbadesktopclient.MainView;
+import org.raflab.studsluzbadesktopclient.coders.CoderType;
+import org.raflab.studsluzbadesktopclient.coders.SimpleCode;
+import org.raflab.studsluzbadesktopclient.datamodel.SkolskaGodina;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentProfileDTO;
 import org.raflab.studsluzbadesktopclient.servercalls.StudentServiceConsumer;
@@ -9,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -36,6 +42,12 @@ public class MenuBarController {
 	@FXML
 	private Label fastSearchError;
 	
+	@FXML
+	private Label aktivnaSkolskaGodinaLabel;
+	
+	@Autowired
+	SkolskaGodina aktivnaSkolskaGodina;
+	
 	
 	public void openSearchStudent(ActionEvent event) {
 		mainView.changeRoot("searchStudent");
@@ -51,6 +63,15 @@ public class MenuBarController {
 	
 	public void openNewNastavnik(ActionEvent event) {
 		mainView.changeRoot("newNastavnik");
+	}
+	
+	public void openSkolskaGodina(ActionEvent event) {
+		mainView.changeRoot("skolskaGodina");
+	}
+	
+	
+	public void openRaspodelaNastave(ActionEvent event) {
+		mainView.changeRoot("raspodelaNastave");
 	}
 	
 	@FXML
@@ -70,5 +91,10 @@ public class MenuBarController {
 		onEnter(ae);
 	}
 	
+
+	@FXML
+    public void initialize() {		
+		aktivnaSkolskaGodinaLabel.setText("Aktivna sk. god: "+aktivnaSkolskaGodina.getPocetna()+"/"+aktivnaSkolskaGodina.getKrajnja());
+    }
 		
 }

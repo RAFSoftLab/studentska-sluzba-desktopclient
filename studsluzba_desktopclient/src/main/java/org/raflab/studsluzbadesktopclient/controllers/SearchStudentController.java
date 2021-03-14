@@ -10,7 +10,7 @@ import org.raflab.studsluzbadesktopclient.datamodel.StudentDTO;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentPodaci;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentProfileDTO;
-import org.raflab.studsluzbadesktopclient.servercalls.SifarniciServisConsumer;
+import org.raflab.studsluzbadesktopclient.servercalls.SifarniciServiceConsumer;
 import org.raflab.studsluzbadesktopclient.servercalls.StudentServiceConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,7 +30,7 @@ public class SearchStudentController {
 	
 	
 	@Autowired	
-	SifarniciServisConsumer codersServiceConsumer;
+	SifarniciServiceConsumer codersServiceConsumer;
 	
 	@Autowired
 	StudentProfileController studentProfileController;

@@ -27,11 +27,14 @@ public class StudentProfileDTO {
 	private List<UpisGodine> upisiGodine;
 	private List<ObnovaGodine> obnoveGodine;	
 	private List<Uplata> uplate;
+	private List<Predmet> nepolozeniPredmeti;
 	
 	// za aktivnu skolsku godinu
 	
 	private List<PrijavaIspita> prijaveIspita;	
 	private List<SlusaPredmet> slusaPredmete;
+	
+
 	
 	public StudentProfileDTO() {
 		
@@ -137,6 +140,16 @@ public class StudentProfileDTO {
 	
 	public String getEmail() {
 		return getStudentPodaci().getEmail();
+	}
+
+
+	public List<Predmet> getNepolozeniPredmeti() {
+		return nepolozeniPredmeti;
+	}
+
+
+	public void setNepolozeniPredmeti(List<Predmet> nepolozeniPredmeti) {
+		this.nepolozeniPredmeti = nepolozeniPredmeti;
 	}
 	
 	

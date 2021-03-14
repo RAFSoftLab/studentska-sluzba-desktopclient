@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.raflab.studsluzbadesktopclient.datamodel.DrziPredmet;
 import org.raflab.studsluzbadesktopclient.datamodel.Nastavnik;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -53,5 +54,9 @@ public class NastavnikServiceConsumer {
 	      else return null;  	    		  
 	}
 	
+	public List<Nastavnik> getAllNastavnik(){
+		Nastavnik[] nastavnici = restTemplate.getForObject(createURL("all"), Nastavnik[].class);
+		return List.of(nastavnici);
+	}
 	
 }

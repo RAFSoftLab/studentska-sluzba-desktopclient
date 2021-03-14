@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.StudentProfileUpisModalController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.StudentProfileObnovaModalController">
   
    <center>
    
@@ -22,8 +22,11 @@
 			<Label text="Napomena" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
 			<ListView fx:id="listaNepolozeni" GridPane.halignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4" maxHeight="100"/> 
 			
-			<Label text="Uplata (iznos)" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-			<TextField fx:id="uplataIznos"  GridPane.columnIndex="1" GridPane.rowIndex="5"/>				
+			<Label text="Ukupno ESPB:" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+			<TextField fx:id="ukupnoEspbTf"   GridPane.halignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+			
+			<Label text="Uplata (iznos)" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+			<TextField fx:id="uplataIznos"  GridPane.columnIndex="1" GridPane.rowIndex="6"/>				
 		</GridPane>			
    </center>
    <bottom>
@@ -31,7 +34,7 @@
    			<padding>
 	        	<Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
 	    	</padding>
-   			<Button text = "Sačuvaj" onAction="#handleSacuvajUpis" />
+   			<Button text = "Sačuvaj" onAction="#handleSacuvajObnovu" />
    		</HBox>
    
    </bottom>

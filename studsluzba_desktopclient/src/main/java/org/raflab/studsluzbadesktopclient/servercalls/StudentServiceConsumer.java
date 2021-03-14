@@ -47,7 +47,7 @@ public class StudentServiceConsumer {
 	      HttpEntity <StudentIndeks> entity = new HttpEntity<StudentIndeks>(si, headers);
 	      
 	      return restTemplate.exchange
-	    		  (createURL("addIndeks"), HttpMethod.POST, entity, Long.class).getBody();
+	    		  (createURL("addindeks"), HttpMethod.POST, entity, Long.class).getBody();
 	}
 	
 	private String createURL(String pathEnd) {
