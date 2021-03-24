@@ -16,7 +16,7 @@
 	   		<padding>
 	        	<Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
 	    	</padding>	    	
-			<TableView fx:id="skolskaGodineTable" maxHeight="200" maxWidth="500">
+			<TableView fx:id="skolskeGodineTable" maxHeight="200" maxWidth="500" onMouseClicked="#handleMouseClicked">
 				 <columns>
 				     	  <TableColumn maxWidth="100.0" prefWidth="150" text="Godina">
 				          	<cellValueFactory>
@@ -49,11 +49,13 @@
 				<TextField fx:id="krajnjaGodinaTf"  GridPane.columnIndex="2" GridPane.rowIndex="0"/>
 				
 				<Label text="Datum početka" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>			
-				<DatePicker fx:id="datumPocetnaDp"  GridPane.columnIndex="1" GridPane.rowIndex="1"/>		
+				<DatePicker fx:id="datumPocetkaDp"  GridPane.columnIndex="1" GridPane.rowIndex="1"/>		
 				
 				<CheckBox fx:id="aktivnaChB" text="Aktivna" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-				<Button text="Sačuvaj" onAction="#handleSacuvajSkolskaGodina" GridPane.columnIndex="1" GridPane.rowIndex="3"/>				
-				
+				<HBox spacing = "8" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
+					<Button text="Sačuvaj novu" onAction="#handleSacuvajSkolskaGodina" />
+					<Button text="Izmeni" onAction="#handleIzmeniSkolskaGodina"/>				
+				</HBox>
 			</GridPane>
 			
 			

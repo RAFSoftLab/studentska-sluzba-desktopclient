@@ -11,7 +11,9 @@ import org.raflab.studsluzbadesktopclient.datamodel.PolozenPredmet;
 import org.raflab.studsluzbadesktopclient.datamodel.Predmet;
 import org.raflab.studsluzbadesktopclient.datamodel.SkolskaGodina;
 import org.raflab.studsluzbadesktopclient.datamodel.UpisGodine;
+import org.raflab.studsluzbadesktopclient.servercalls.AdminServiceConsumer;
 import org.raflab.studsluzbadesktopclient.servercalls.TokStudijaServisConsumer;
+import org.raflab.studsluzbadesktopclient.utils.SortUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +23,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
@@ -38,6 +41,9 @@ public class StudentProfileObnovaModalController {
 	
 	@FXML ListView<Predmet>  listaNepolozeni;
 	
+	@FXML ComboBox<SkolskaGodina> skolskeGodineCB;
+	
+	
 	@Autowired
 	TokStudijaServisConsumer tokStudijaServiceConsumer;
 	
@@ -52,6 +58,9 @@ public class StudentProfileObnovaModalController {
 	SkolskaGodina aktivnaSkolskaGodina;
 	
 	@FXML TextField ukupnoEspbTf;
+	
+	@Autowired
+	AdminServiceConsumer adminServiceConsumer;
 	
 	@FXML
     public void initialize() {		
@@ -68,6 +77,9 @@ public class StudentProfileObnovaModalController {
 				ukupnoEspbTf.setText(String.valueOf(sumaEspb));				
 			}		
 		});
+		List<SkolskaGodina> skolskeGodine = adminServiceConsumer.getSkolskeGodine();
+		SortUtils.sortSkolskeGodineDSC(skolskeGodine);
+		skolskeGodineCB.setItems(FXCollections.observableArrayList(skolskeGodine));
 	}
 	
 	public void handleSacuvajObnovu(ActionEvent event) {

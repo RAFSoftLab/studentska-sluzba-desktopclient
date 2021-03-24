@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.RaspodelaNastaveStudentiController">
+
+<top>
+	<fx:include source="menuBar.fxml" />
+</top>
+
+<center>
+	 	<VBox alignment="CENTER" spacing="8">	
+   			<HBox alignment="CENTER" spacing="8"> 
+	   			<padding>
+		        	<Insets bottom="10.0"/>
+		        </padding>	
+	   			<Label text="Filter"/>	   			
+	   			<TextField fx:id="filterTableTf" maxWidth="200" onKeyReleased="#filterTable"/>
+   			</HBox>
+   			<padding>
+	        	<Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+	    	</padding>	    	
+			<TableView fx:id="drziPredmetTable" maxHeight="300" maxWidth="800">
+				 <columns>
+				     	  <TableColumn maxWidth="300.0" text="Nastavnik">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="nastavnik" />
+			                 </cellValueFactory>
+				          </TableColumn>
+				          <TableColumn maxWidth="500.0"  text="Predmet">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="predmet" />
+			                 </cellValueFactory>
+				          </TableColumn>
+				  </columns>
+			</TableView>	
+			
+			<TableView fx:id="studentiTable" maxHeight="300" maxWidth="800">
+				 <columns>
+				     	  <TableColumn minWidth="100.0" text="Broj indeksa">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="broj" />
+			                 </cellValueFactory>
+				          </TableColumn>
+				          <TableColumn minWidth="100.0"  text="Stud. program">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="studProgram" />
+			                 </cellValueFactory>
+				          </TableColumn>
+				          <TableColumn minWidth="100.0"  text="Godina">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="godina" />
+			                 </cellValueFactory>
+				          </TableColumn>				         
+				          <TableColumn minWidth="300.0"  text="Ime i prezime">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="imeIPrezime" />
+			                 </cellValueFactory>
+				          </TableColumn>
+				  </columns>
+			</TableView>	
+			<Button text="Dodaj" onAction="#handleOpenDodajStudentaModal"/>				          
+   		</VBox>
+</center>
+
+
+
+</BorderPane>

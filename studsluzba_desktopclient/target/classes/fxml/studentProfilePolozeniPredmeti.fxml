@@ -21,10 +21,8 @@
 	<BorderPane>
 		<top>
 		
-		</top>
-	
-		
-		<center>
+		</top>		
+		<center>		
 			<VBox alignment="CENTER">			
 	   		<padding>
 	        	<Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
@@ -42,14 +40,18 @@
 				          	<cellValueFactory>
 			                      <PropertyValueFactory property="naziv" />
 			                 </cellValueFactory>
-				          </TableColumn>	
-				           
+				          </TableColumn>				        
+				     	  <TableColumn maxWidth="200.0" prefWidth="250" text="Nastavnik">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="nastavnik" />
+			                 </cellValueFactory>
+				          </TableColumn>					           
 				          <TableColumn  maxWidth="100.0" prefWidth="150" text="Ocena">
 				          	<cellValueFactory>
 			                      <PropertyValueFactory property="ocena" />
 			                 </cellValueFactory>
 				          </TableColumn>	
-				           <TableColumn maxWidth="100.0" prefWidth="150" text="ESPB">
+				          <TableColumn maxWidth="100.0" prefWidth="150" text="ESPB">
 				          	<cellValueFactory>
 			                      <PropertyValueFactory property="espb" />
 			                 </cellValueFactory>
@@ -71,11 +73,10 @@
 			</HBox>
 			<Button text="Uverenje" />
 			</VBox>
-		</center>
-		<bottom>
-			
+	
+		</center>		
 		
-		</bottom>
+		
 	</BorderPane>
 
 </center>

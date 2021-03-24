@@ -119,7 +119,7 @@ public class Predmet {
 	
 	@Override
 	public String toString() {
-		return "["+ this.sifra + "] " + this.naziv + " ESPB:"+this.espb + " "+studProgram.getOznaka()+" ["+studProgram.getGodinaAkreditacije()+"]";
+		return "["+ this.sifra + "] " + this.naziv + " "+studProgram.getOznaka()+" ["+studProgram.getGodinaAkreditacije()+"]";
 	}
 	
 	

@@ -27,13 +27,11 @@ public class AdminServiceConsumer {
 	private final String ADMIN_URL_PATH = "/admin";
 	
 	/*
-	 * action - upis, obnova ili uplata
+	 * entitet- upis, obnova ili uplata
 	 */
 	private String createURL(String entitet, String pathEnd) {
 		return baseUrl+ADMIN_URL_PATH+"/"+entitet+"/"+pathEnd;
 	}
-	
-	
 	
 		
 	public SkolskaGodina getAktivnaSkolskaGodina() {  	     	      	
@@ -45,8 +43,8 @@ public class AdminServiceConsumer {
 	}
 	
 	public List<SkolskaGodina> getSkolskeGodine(){
-		SkolskaGodina[] skolskeGodine = restTemplate.getForObject(createURL("skolskagodina", "all"), SkolskaGodina[].class);
-		return List.of(skolskeGodine);
+		SkolskaGodina[] skolskeGodine = restTemplate.getForObject(createURL("skolskagodina", "all"), SkolskaGodina[].class);	
+		return Arrays.asList(skolskeGodine);
 	}
 	    
 	public Long saveSkolskaGodina(@RequestBody SkolskaGodina sg) {
@@ -56,6 +54,15 @@ public class AdminServiceConsumer {
 	      
 	      return restTemplate.exchange
 	    		  (createURL("skolskagodina","add"), HttpMethod.POST, entity, Long.class).getBody();
+	}
+	
+	public Long updateSkolskaGodina(@RequestBody SkolskaGodina sg) {
+	      HttpHeaders headers = new HttpHeaders();
+	      headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+	      HttpEntity <SkolskaGodina> entity = new HttpEntity<SkolskaGodina>(sg, headers);
+	      
+	      return restTemplate.exchange
+	    		  (createURL("skolskagodina","update"), HttpMethod.PUT, entity, Long.class).getBody();
 	}
 	
 	

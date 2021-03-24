@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.raflab.studsluzbadesktopclient.datamodel.DrziPredmet;
+import org.raflab.studsluzbadesktopclient.datamodel.SlusaPredmet;
+import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -30,7 +32,17 @@ public class RaspodelaNastaveServiceConsumer {
 	
 	public List<DrziPredmet> getDrziPredmetUAktivnojSkolskojGodini(){
 		DrziPredmet[] drziPredmetList = restTemplate.getForObject(createURL("drzipredmet", "aktivna/all"), DrziPredmet[].class);
-		return List.of(drziPredmetList);
+		return Arrays.asList(drziPredmetList);
+	}
+	
+	public List<StudentIndeks> getSlusaPredmetForDrziPredmet(Long idDrziPredmet){
+		StudentIndeks[] studentiSlusaju = restTemplate.getForObject(createURL("slusapredmetaktivna", String.valueOf(idDrziPredmet)), StudentIndeks[].class);
+		return Arrays.asList(studentiSlusaju);
+	}
+	
+	public List<StudentIndeks> getNeSlusaPredmetForDrziPredmet(Long idDrziPredmet){
+		StudentIndeks[] studentiNeSlusaju = restTemplate.getForObject(createURL("neslusapredmetaktivna", String.valueOf(idDrziPredmet)), StudentIndeks[].class);
+		return Arrays.asList(studentiNeSlusaju);
 	}
 	
 	public Long saveDrziPredmet(@RequestBody DrziPredmet dp) {
@@ -40,6 +52,15 @@ public class RaspodelaNastaveServiceConsumer {
 	      
 	      return restTemplate.exchange
 	    		  (createURL("drzipredmet","add"), HttpMethod.POST, entity, Long.class).getBody();
+	}
+	
+	public Long saveSlusaPredmet(@RequestBody SlusaPredmet sp) {
+	      HttpHeaders headers = new HttpHeaders();
+	      headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+	      HttpEntity <SlusaPredmet> entity = new HttpEntity<SlusaPredmet>(sp, headers);
+	      
+	      return restTemplate.exchange
+	    		  (createURL("slusapredmet","add"), HttpMethod.POST, entity, Long.class).getBody();
 	}
 	
 	public void deleteDrziPredmet(Long id) {		

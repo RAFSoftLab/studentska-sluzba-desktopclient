@@ -91,6 +91,12 @@ public class DrziPredmet {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return  nastavnik.toString() + " - " + predmet.toString(); 
+	}
+	
 	
 	
 	

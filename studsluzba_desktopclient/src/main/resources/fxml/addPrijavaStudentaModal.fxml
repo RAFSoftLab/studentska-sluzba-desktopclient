@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.AddPrijavaStudentaModalController">
+
+	<padding>
+	   	<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+	</padding>	 
+	
+	<Label fx:id="ispitLabel" text = ""/>
+	<TableView fx:id="studentiTable" maxHeight="300" maxWidth="800">
+				 <columns>
+				     	  <TableColumn minWidth="100.0" text="Broj indeksa">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="broj" />
+			                 </cellValueFactory>
+				          </TableColumn>
+				          <TableColumn minWidth="100.0"  text="Stud. program">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="studProgram" />
+			                 </cellValueFactory>
+				          </TableColumn>
+				          <TableColumn minWidth="100.0"  text="Godina">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="godina" />
+			                 </cellValueFactory>
+				          </TableColumn>				         
+				          <TableColumn minWidth="300.0"  text="Ime i prezime">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="imeIPrezime" />
+			                 </cellValueFactory>
+				          </TableColumn>
+				  </columns>
+			</TableView>
+			<Button text="Dodaj" onAction="#handleDodajPrijavuStudenta"/>
+</VBox>	

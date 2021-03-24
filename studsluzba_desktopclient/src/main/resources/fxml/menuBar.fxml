@@ -39,17 +39,19 @@
             </Menu>
             <Menu text="Nastava i ispiti">
                 <items>
-                	<MenuItem text="Raspodela nastave" onAction = "#openRaspodelaNastave" /> 
-                	<MenuItem text="Raspodela nastave - studenti" />          
-                	<MenuItem text="Ispitni rokovi" />                                   
-                    <MenuItem text="Ispiti" />                    
+                	<MenuItem text="Raspodela nastave" onAction="#openRaspodelaNastave" /> 
+                	<MenuItem text="Raspodela nastave - studenti" onAction="#openRaspodelaNastaveStudenti" />          
+                	<MenuItem text="Ispitni rokovi" onAction="#openIspitniRokovi" />                                   
+                    <MenuItem text="Ispiti - unos" onAction="#openIspitiUnos"/>
+                    <MenuItem text="Ispiti - prijave" onAction="#openIspitiPrijave"/>
+                    <MenuItem text="Ispiti - rezultati" onAction="#openIspitiRezultati"/>                    
                 </items>                          
             </Menu>
             
             <Menu text="Administracija">
                 <items>
                     <MenuItem text="Šifarnici" />               
-                    <MenuItem onAction="#openSkolskaGodina" text="Školska godina"  />               
+                    <MenuItem onAction="#openSkolskeGodine" text="Školske godine"  />               
                     <MenuItem text="Korisnici" />
                 </items>                          
             </Menu>

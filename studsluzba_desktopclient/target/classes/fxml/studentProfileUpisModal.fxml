@@ -23,7 +23,11 @@
 			<ListView fx:id="listaNepolozeni" GridPane.halignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4" maxHeight="100"/> 
 			
 			<Label text="Uplata (iznos)" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-			<TextField fx:id="uplataIznos"  GridPane.columnIndex="1" GridPane.rowIndex="5"/>				
+			<TextField fx:id="uplataIznos"  GridPane.columnIndex="1" GridPane.rowIndex="5"/>		
+			
+			<Label text="Školska godina" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+			<ComboBox fx:id="skolskeGodineCB"  GridPane.columnIndex="1" GridPane.rowIndex="6"/>			
+					
 		</GridPane>			
    </center>
    <bottom>

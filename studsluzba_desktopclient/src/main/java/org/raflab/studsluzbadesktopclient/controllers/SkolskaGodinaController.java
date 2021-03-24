@@ -18,12 +18,13 @@ import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 
 import static org.raflab.studsluzbadesktopclient.utils.TextInputUtils.*;
+import javafx.scene.input.MouseEvent;
 
 @Component
 public class SkolskaGodinaController {
 	
 	
-	@FXML TableView<SkolskaGodina> skolskaGodineTable;
+	@FXML TableView<SkolskaGodina> skolskeGodineTable;
 	
 	ObservableList<SkolskaGodina> skolskeGodineObservable;
 	
@@ -31,18 +32,20 @@ public class SkolskaGodinaController {
 
 	@FXML TextField krajnjaGodinaTf;
 	
-	@FXML DatePicker datumPocetnaDp;
+	@FXML DatePicker datumPocetkaDp;
 	
 	@FXML CheckBox aktivnaChB;
 	
 	@Autowired
 	AdminServiceConsumer adminSeviceConsumer;
 	
+	
+	
 	@FXML
 	public void initialize() {		
 		skolskeGodineObservable = FXCollections.observableArrayList(adminSeviceConsumer.getSkolskeGodine());
-		skolskaGodineTable.setItems(skolskeGodineObservable);
-		datumPocetnaDp.setValue(LocalDate.now());
+		skolskeGodineTable.setItems(skolskeGodineObservable);
+		datumPocetkaDp.setValue(LocalDate.now());
 		aktivnaChB.setSelected(true);
 		krajnjaGodinaTf.setEditable(false);
 		// kad se izgubi fokus za text field pocetne godine generise se tekst za krajnju
@@ -51,21 +54,53 @@ public class SkolskaGodinaController {
 				int pocetna = getIntIfNotEmpty(pocetnaGodinaTf);
 				krajnjaGodinaTf.setText(String.valueOf(pocetna+1));
 			}
-		});
+		});		
 		
 	}
 
-	@FXML public void handleSacuvajSkolskaGodina(ActionEvent event) {
+	@FXML public void handleSacuvajSkolskaGodina(ActionEvent event) {		
 		SkolskaGodina sk = new SkolskaGodina();
 		sk.setPocetna(getIntIfNotEmpty(pocetnaGodinaTf));		
 		sk.setAktivna(aktivnaChB.isSelected());
-		sk.setDatumPocetka(datumPocetnaDp.getValue());
+		sk.setDatumPocetka(datumPocetkaDp.getValue());
 		adminSeviceConsumer.saveSkolskaGodina(sk);
-		// ponovo ucitavamo tabelu sa servera, jer se tamo menja i prethodno aktivna skolska godina
-		skolskeGodineObservable = FXCollections.observableArrayList(adminSeviceConsumer.getSkolskeGodine());
-		skolskaGodineTable.setItems(skolskeGodineObservable);			
+		resetForm();	
+	}
+
+	@FXML public void handleMouseClicked(MouseEvent event) {
+		if(event.getClickCount()==2) {
+			SkolskaGodina selektovanaSkGod = skolskeGodineTable.getSelectionModel().getSelectedItem();
+			pocetnaGodinaTf.setText(String.valueOf(selektovanaSkGod.getPocetna()));
+			krajnjaGodinaTf.setText(String.valueOf(selektovanaSkGod.getKrajnja()));
+			datumPocetkaDp.setValue(selektovanaSkGod.getDatumPocetka());
+			aktivnaChB.setSelected(selektovanaSkGod.isAktivna());
+			
+		}		
 	}
 	
+	private void resetForm() {		
+		pocetnaGodinaTf.setText("");
+		krajnjaGodinaTf.setText("");
+		datumPocetkaDp.setValue(LocalDate.now());
+		aktivnaChB.setSelected(true);
+		// ponovo ucitavamo tabelu sa servera, jer se prilikom cuvanja menja i prethodno aktivna skolska godina
+		skolskeGodineObservable = FXCollections.observableArrayList(adminSeviceConsumer.getSkolskeGodine());		
+		skolskeGodineTable.setItems(skolskeGodineObservable);	
+		skolskeGodineTable.refresh();
+		
+	}
 	
-	// TODO izmena skolske godine, selektuje se u tabeli i ucita se u formu za unos moze da se izmeni
+	/*
+	 * menja skolsku godinu selektovanu u tabeli 
+	 */
+	@FXML public void handleIzmeniSkolskaGodina() {
+		SkolskaGodina selektovanaSkGod = skolskeGodineTable.getSelectionModel().getSelectedItem();
+		if(selektovanaSkGod!=null) {
+			selektovanaSkGod.setAktivna(aktivnaChB.isSelected());
+			selektovanaSkGod.setDatumPocetka(datumPocetkaDp.getValue());
+			adminSeviceConsumer.saveSkolskaGodina(selektovanaSkGod);
+			resetForm();	
+		}
+	}
+	
 }

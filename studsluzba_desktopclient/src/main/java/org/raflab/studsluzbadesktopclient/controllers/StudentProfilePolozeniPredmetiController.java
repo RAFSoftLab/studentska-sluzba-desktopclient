@@ -1,5 +1,6 @@
 package org.raflab.studsluzbadesktopclient.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.raflab.studsluzbadesktopclient.datamodel.PolozenPredmet;
@@ -29,6 +30,7 @@ public class StudentProfilePolozeniPredmetiController {
 	@FXML
     public void initialize() {		
 		List<PolozenPredmet> polozeniPredmeti = studentProfileController.getStudentProfile().getPolozeniPredmeti();
+		if(polozeniPredmeti==null) polozeniPredmeti = new ArrayList<>();
 		polozeniPredmetiTable.setItems(FXCollections.observableArrayList(polozeniPredmeti));
 		Integer sumaEspb = polozeniPredmeti.stream().mapToInt(PolozenPredmet::getEspb).sum();
 		ukupnoEspbLabel.setText(String.valueOf(sumaEspb));

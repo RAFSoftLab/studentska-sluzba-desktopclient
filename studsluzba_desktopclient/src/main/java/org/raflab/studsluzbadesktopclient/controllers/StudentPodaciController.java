@@ -168,7 +168,8 @@ public class StudentPodaciController {
 	}
 	
 	@FXML
-    public void initialize() {		
+    public void initialize() {
+		studentPodaci = null;  // TODO ispraviti da moze i da se azurira postojeci
 		List<SimpleCode> drzavaCodes = coderFactory.getSimpleCoder(CoderType.DRZAVA).getCodes();
 		drzavaRodjenjaCb.setItems(FXCollections.observableArrayList(drzavaCodes));
 		drzavaRodjenjaCb.setValue(new SimpleCode("Republika Srbija"));

@@ -71,7 +71,9 @@ public class StudentIndeks{
 		this.student = student;
 	}
 
-	
+	public String getImeIPrezime() {
+		return student.getIme() + " " + student.getPrezime();
+	}
 	
 	@Override
 	public String toString() {

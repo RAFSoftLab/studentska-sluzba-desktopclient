@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+
+<BorderPane  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.IspitniRokoviController">
+
+<top>
+	<fx:include source="menuBar.fxml" />
+</top>
+   <center>
+   	<VBox alignment="CENTER">			
+	   		<padding>
+	        	<Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+	    	</padding>	    	
+			<TableView fx:id="ispitniRokoviTable" maxHeight="200" maxWidth="800" onMouseClicked="#handleMouseClicked" onKeyPressed="#handleKeyPressed">
+				 <columns>
+				     	  <TableColumn maxWidth="100.0" prefWidth="150" text="Naziv">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="naziv" />
+			                 </cellValueFactory>
+				          </TableColumn>
+				          <TableColumn maxWidth="150.0" text="Datum početka">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="datumPocetka" />
+			                 </cellValueFactory>
+				          </TableColumn>	
+				          <TableColumn maxWidth="150.0" text="Datum zavrsetka">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="datumZavrsetka" />
+			                 </cellValueFactory>
+				          </TableColumn>
+				           <TableColumn maxWidth="150.0" text="Datum početka prijave">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="datumPocetkaPrijave" />
+			                 </cellValueFactory>
+				          </TableColumn>			          
+				   </columns>
+			</TableView>
+			
+	  </VBox>										
+   </center>
+    <bottom>
+   		<VBox alignment="TOP_CENTER" >			
+	   		<padding>
+	        	<Insets bottom="100.0" left="20.0" right="20.0" top="10.0" />
+	    	</padding>	  
+	   	    <GridPane hgap="7" vgap = "7" alignment="CENTER">
+				
+				<Label text="Naziv roka" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+				<TextField fx:id="nazivTf"  GridPane.columnIndex="1" GridPane.rowIndex="0" />
+								
+				<Label text="Datum početka" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>			
+				<DatePicker fx:id="datumPocetkaDp"  GridPane.columnIndex="1" GridPane.rowIndex="1"/>		
+				
+				<Label text="Datum zavrsetka" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2"/>			
+				<DatePicker fx:id="datumZavrsetkaDp"  GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+				
+				<Label text="Datum početka prijave" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3"/>			
+				<DatePicker fx:id="datumPocetkaPrijaveDp"  GridPane.columnIndex="1" GridPane.rowIndex="3"/>				
+				
+				
+				<HBox spacing = "8" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4">
+					<Button text="Sačuvaj novi" onAction="#handleSacuvajIspitniRok" />
+					<Button text="Izmeni" onAction="#handleIzmeniIspitniRok"/>				
+				</HBox>
+			</GridPane>
+			
+			
+		</VBox>		
+   
+   </bottom>
+</BorderPane>   

@@ -84,6 +84,10 @@ public class SkolskaGodina {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return pocetna + "/" + krajnja + (aktivna ? "-aktivna" : "");
+	}
 	
 	
 	

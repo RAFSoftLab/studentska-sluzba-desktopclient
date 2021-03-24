@@ -17,6 +17,7 @@ public class IspitniRok {
 	private LocalDate datumZavrsetka;
 	private LocalDate datumPocetkaPrijave;   // ako se prebacimo na prijavu svih ispita u odredjenom periodu
  	private LocalDate datumZavrsetkaPrijave;
+ 	private SkolskaGodina skolskaGodina;
  	
 	public String getNaziv() {
 		return naziv;
@@ -55,7 +56,20 @@ public class IspitniRok {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	@Override
+	public String toString() {
+		return naziv +" "+ datumPocetka+ "-" + datumZavrsetka;
+				
+	}
+	public SkolskaGodina getSkolskaGodina() {
+		return skolskaGodina;
+	}
+	public void setSkolskaGodina(SkolskaGodina skolskaGodina) {
+		this.skolskaGodina = skolskaGodina;
+	}
  	
+	
  	
 	
 	

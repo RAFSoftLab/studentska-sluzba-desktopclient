@@ -3,6 +3,7 @@ package org.raflab.studsluzbadesktopclient.datamodel;
 
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Set;
 
 
@@ -10,7 +11,8 @@ public class Ispit {
 	
 
 	private Long id;
-	private LocalDate datumOdrzavanja;    // i vreme
+	private LocalDate datumOdrzavanja;  
+	private LocalTime vremeOdrzavanja;
 	private String mestoOdrzavanja;  // ne mora da se unosi
 	
 	private boolean zakljucen = false;
@@ -58,8 +60,34 @@ public class Ispit {
 	public void setPrijave(Set<PrijavaIspita> prijave) {
 		this.prijave = prijave;
 	}
+	public DrziPredmet getDrziPredmet() {
+		return drziPredmet;
+	}
+	public void setDrziPredmet(DrziPredmet drziPredmet) {
+		this.drziPredmet = drziPredmet;
+	}
 	
+	public String getNastavnik() {
+		return drziPredmet.getNastavnik().toString();
+	}
 	
+	public String getPredmet() {
+		return drziPredmet.getPredmet().toString();
+	}
+	public LocalTime getVremeOdrzavanja() {
+		return vremeOdrzavanja;
+	}
+	public void setVremeOdrzavanja(LocalTime vremeOdrzavanja) {
+		this.vremeOdrzavanja = vremeOdrzavanja;
+	}
+	
+	public String getZakljucenStr() {
+		return zakljucen ? "da" : "ne";
+	}
+	@Override
+	public String toString() {
+		return "Ispit: " + drziPredmet.getPredmet().getNaziv()+" " + drziPredmet.getNastavnik() + ", datum: " + datumOdrzavanja + ", vreme: " + vremeOdrzavanja ;
+	}
 	
 	
 }

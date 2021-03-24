@@ -49,29 +49,49 @@ public class MenuBarController {
 	SkolskaGodina aktivnaSkolskaGodina;
 	
 	
-	public void openSearchStudent(ActionEvent event) {
+	public void openSearchStudent() {
 		mainView.changeRoot("searchStudent");
 	}
 	
-	public void openSearchNastavnik(ActionEvent event) {
+	public void openSearchNastavnik() {
 		mainView.changeRoot("searchNastavnik");
 	}
 	
-	public void openNewStudent(ActionEvent event) {		
+	public void openNewStudent() {		
 		mainView.changeRoot("newStudent");
 	}
 	
-	public void openNewNastavnik(ActionEvent event) {
+	public void openNewNastavnik() {
 		mainView.changeRoot("newNastavnik");
 	}
 	
-	public void openSkolskaGodina(ActionEvent event) {
-		mainView.changeRoot("skolskaGodina");
+	public void openSkolskeGodine() {
+		mainView.changeRoot("skolskeGodine");
 	}
 	
 	
-	public void openRaspodelaNastave(ActionEvent event) {
+	public void openRaspodelaNastave() {
 		mainView.changeRoot("raspodelaNastave");
+	}
+	
+	public void openIspitniRokovi() {
+		mainView.changeRoot("ispitniRokovi");
+	}
+	
+	public void openIspitiUnos() {
+		mainView.changeRoot("ispitiUnos");
+	}
+	
+	public void openIspitiPrijave() {
+		mainView.changeRoot("ispitiPrijave");
+	}
+	
+	public void openIspitiRezultati() {
+		mainView.changeRoot("ispitiRezultati");
+	}
+	
+	@FXML public void openRaspodelaNastaveStudenti() {
+		mainView.changeRoot("raspodelaNastaveStudenti");
 	}
 	
 	@FXML
@@ -96,5 +116,7 @@ public class MenuBarController {
     public void initialize() {		
 		aktivnaSkolskaGodinaLabel.setText("Aktivna sk. god: "+aktivnaSkolskaGodina.getPocetna()+"/"+aktivnaSkolskaGodina.getKrajnja());
     }
+
+	
 		
 }

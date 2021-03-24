@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.IspitiUnosController">
+
+<top>
+	<fx:include source="menuBar.fxml" />
+</top>
+
+<center>
+	
+	<VBox alignment="CENTER" spacing="8">
+		<padding>
+	        	<Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+	    </padding>	 
+	    <HBox alignment="CENTER" spacing="8"> 
+	    	<padding>
+	        	<Insets bottom="10.0" top="10.0" />
+	    	</padding>	 
+	    	<Label text="Ispitni rok"/>
+	    	<ComboBox fx:id = "ispitniRokoviCmb" onAction="#prikaziIspiteUTabeli"/>	  
+	    	<Button text="Uvezi raspored" onAction="#uveziIspiteIzFajla"/>  	 
+	    </HBox> 
+	    <TableView fx:id="ispitiTable" maxHeight="200" maxWidth="900" onMouseClicked="#handleMouseClicked">
+			 <columns>
+		     	  <TableColumn minWidth="300.0"  text="Predmet">
+		          	<cellValueFactory>
+	                      <PropertyValueFactory property="predmet" />
+	                 </cellValueFactory>
+		          </TableColumn>
+		          <TableColumn minWidth="150.0" text="Nastavnik">
+		          	<cellValueFactory>
+	                      <PropertyValueFactory property="nastavnik" />
+	                 </cellValueFactory>
+		          </TableColumn>	
+		          <TableColumn minWidth="100.0" text="Datum">
+		          	<cellValueFactory>
+	                      <PropertyValueFactory property="datumOdrzavanja" />
+	                 </cellValueFactory>
+		          </TableColumn>
+		          <TableColumn minWidth="100.0" text="Vreme">
+		          	<cellValueFactory>
+	                      <PropertyValueFactory property="vremeOdrzavanja" />
+	                 </cellValueFactory>
+		          </TableColumn>				          
+		           <TableColumn minWidth="100.0" text="Mesto">
+		          	<cellValueFactory>
+	                      <PropertyValueFactory property="mestoOdrzavanja" />
+	                 </cellValueFactory>
+		          </TableColumn>			          
+		          <TableColumn minWidth="100.0" text="Zaključen">
+		          	<cellValueFactory>
+	                      <PropertyValueFactory property="zakljucenStr" />
+	                 </cellValueFactory>
+		          </TableColumn>			          
+			   </columns>
+			</TableView>
+			<HBox alignment = "CENTER" spacing="10">	
+				<padding>
+	        		<Insets bottom="20.0" right="20.0" top="20.0" />
+	    		</padding>
+	    		<VBox spacing="10">
+	    			<TextField fx:id="filterDrziPredmetTf" onKeyPressed="#handleFilterDrziPredmet"/>
+	    			<ListView fx:id="drziPredmetLW" minWidth="500"/>
+	    		</VBox>	 							
+				<GridPane hgap="8" vgap="8">
+					<Label text="Datum" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+					<DatePicker fx:id="datumDp"  GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+					<Label text="Vreme" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+					<TextField fx:id="vremeTf"  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+					<Label text="hh:mm" GridPane.halignment="LEFT" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+					<Label text="Mesto" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+					<TextField fx:id="mestoTf"  GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+					<HBox spacing = "8" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4">
+						<Button text="Sačuvaj novi" onAction="#handleSacuvajIspit" />
+						<Button text="Izmeni" onAction="#handleIzmeniIspit"/>				
+					</HBox>					
+				</GridPane>
+				
+			</HBox>
+				
+	</VBox>
+</center>
+
+</BorderPane>

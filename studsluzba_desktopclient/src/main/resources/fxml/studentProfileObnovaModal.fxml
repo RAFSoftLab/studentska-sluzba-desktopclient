@@ -26,7 +26,11 @@
 			<TextField fx:id="ukupnoEspbTf"   GridPane.halignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
 			
 			<Label text="Uplata (iznos)" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-			<TextField fx:id="uplataIznos"  GridPane.columnIndex="1" GridPane.rowIndex="6"/>				
+			<TextField fx:id="uplataIznos"  GridPane.columnIndex="1" GridPane.rowIndex="6"/>		
+			
+			<Label text="Školska godina" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+			<ComboBox fx:id="skolskeGodineCB"  GridPane.columnIndex="1" GridPane.rowIndex="7"/>			
+			
 		</GridPane>			
    </center>
    <bottom>
