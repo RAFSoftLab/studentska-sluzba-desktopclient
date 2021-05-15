@@ -17,11 +17,12 @@ Urađeno
 - otvaranje profila studenta posle pretrage
 - okvir za rad sa raznim vrstama sifarnika (mesta, drzave, zvanja, srednje skole)
 - unos novog studenta i otvaranje profila sa unosom indeksa
-- profil studenta: pregeld podataka, položenih predmeta i toka studija (upis i obnova)
+- profil studenta: pregeled podataka, položenih predmeta i toka studija (upis i obnova)
+- unos upisa i obnove godine, sa pregeldom prenetih/upisanih godina - treba još malo doraditi
 
 Uraditi
 
-- unos upisa i obnove godine, sa pregeldom prenetih/upisanih godina - započeto
+
 - napredna pretraga studenata po raznim poljima (na primer završena srednja škola)
 - unos i izmena nastavnika, unos zvanja - započeto
 
