@@ -3,7 +3,9 @@ package org.raflab.studsluzbadesktopclient.controllers;
 import org.raflab.studsluzbadesktopclient.MainView;
 import org.raflab.studsluzbadesktopclient.datamodel.PolozenPredmet;
 import org.raflab.studsluzbadesktopclient.datamodel.Predmet;
+import org.raflab.studsluzbadesktopclient.datamodel.StudentDTO;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
+import org.raflab.studsluzbadesktopclient.datamodel.StudentPodaci;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentProfileDTO;
 import org.raflab.studsluzbadesktopclient.servercalls.StudentServiceConsumer;
 import org.raflab.studsluzbadesktopclient.utils.IndeksFormater;
@@ -56,30 +58,27 @@ public class StudentProfileController {
 
 	@FXML Label brojTelefonaLabel;
 	
+	@Autowired
+	StudentPodaciController studentPodaciController;
 	
-	
-	
-	
+		
 	public void setStudentProfile(StudentProfileDTO studentProfile) {
 		this.studentProfile = studentProfile;
 	}
 	
 		
 	public void postaviIndeks(int broj, String studProgram, int godina) {
-		StudentIndeks studIndeks = studentProfile.getAktivanIndeks();
-		studIndeks.setAktivan(true);
+		StudentIndeks studIndeks = studentProfile.getIndeks();
+		studIndeks.setAktivan(studIndeks.isAktivan());
 		studIndeks.setBroj(broj);
-		studIndeks.setStudProgram(studProgram);
+		studIndeks.setStudProgramOznaka(studProgram);
 		studIndeks.setGodina(godina);
 		Long id = studentService.saveStudentIndeks(studIndeks);
 		studIndeks.setId(id);
 		
 	}
 	
-	
-	
-	
-	
+		
 	
 	public StudentProfileDTO getStudentProfile() {
 		return studentProfile;
@@ -98,11 +97,16 @@ public class StudentProfileController {
 		datumRodjenjaLabel.setText(studentProfile.getDatumRodjenja());
 		adresaLabel.setText(studentProfile.getAdresa());
 		emailLabel.setText(studentProfile.getEmail());
-		brojTelefonaLabel.setText(studentProfile.getBrojTelefona());
+		brojTelefonaLabel.setText(studentProfile.getBrojTelefonaMobilni());
 		
 	}
 	
-	
+	public void handleOtvoriIzmenaPodataka() {			
+		StudentPodaci sp = studentProfile.getStudentPodaci();		
+		studentPodaciController.setStudentPodaci(sp);
+		mainView.changeRoot("studentPodaci");
+		
+	}
 	
 	
 }

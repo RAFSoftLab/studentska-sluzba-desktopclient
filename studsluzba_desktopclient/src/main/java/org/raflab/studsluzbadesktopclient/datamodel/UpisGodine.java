@@ -11,8 +11,8 @@ public class UpisGodine {
 	
 	private LocalDate datumUpisa;
 	
-	private int prenosEspb; // podrazumevano 0
-	private int godinaKojaSeUpisuje;
+	private Integer prenosEspb; // podrazumevano 0
+	private Integer godinaKojaSeUpisuje;
 	private List<Predmet> predmeti;
 	
 	private String napomena;
@@ -37,13 +37,13 @@ public class UpisGodine {
 	public int getPrenosEspb() {
 		return prenosEspb;
 	}
-	public void setPrenosEspb(int prenosEspb) {
+	public void setPrenosEspb(Integer prenosEspb) {
 		this.prenosEspb = prenosEspb;
 	}
 	public int getGodinaKojaSeUpisuje() {
 		return godinaKojaSeUpisuje;
 	}
-	public void setGodinaKojaSeUpisuje(int godinaKojaSeUpisuje) {
+	public void setGodinaKojaSeUpisuje(Integer godinaKojaSeUpisuje) {
 		this.godinaKojaSeUpisuje = godinaKojaSeUpisuje;
 	}
 	public List<Predmet> getPredmeti() {

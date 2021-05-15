@@ -18,7 +18,8 @@ public class StudentPodaci {
 		private String nacionalnost;   // samoizjasnjavanje, moze bilo sta  
 		private char pol;    // not null
 		private String adresa;  // not null
-		private String brojTelefona;  // not null		
+		private String brojTelefonaMobilni;  
+		private String brojTelefonaFiksni;	
 		private String email;  // not null
 		private String brojLicneKarte; 
 		private String licnuKartuIzdao;
@@ -36,7 +37,7 @@ public class StudentPodaci {
 					+ jmbg + ", datumRodjenja=" + datumRodjenja + ", mestoRodjenjaCode=" + mestoRodjenja
 					+ ", mestoPrebivalistaCode=" + mestoPrebivalista + ", drzavaRodjenjaCode=" + drzavaRodjenja
 					+ ", drzavljanstvoCode=" + drzavljanstvo + ", nacionalnost=" + nacionalnost + ", pol=" + pol
-					+ ", adresa=" + adresa + ", brojTelefona=" + brojTelefona + ", email=" + email + ", brojLicneKarte="
+					+ ", adresa=" + adresa + ", brojTelefona=" + brojTelefonaMobilni + ", email=" + email + ", brojLicneKarte="
 					+ brojLicneKarte + ", licnuKartuIzdao=" + licnuKartuIzdao + ", mestoStanovanjaCode="
 					+ mestoStanovanja + ", adresaStanovanja=" + adresaStanovanja + "]";
 		}
@@ -199,14 +200,28 @@ public class StudentPodaci {
 
 
 
-		public String getBrojTelefona() {
-			return brojTelefona;
+		
+
+		public String getBrojTelefonaMobilni() {
+			return brojTelefonaMobilni;
 		}
 
 
 
-		public void setBrojTelefona(String brojTelefona) {
-			this.brojTelefona = brojTelefona;
+		public void setBrojTelefonaMobilni(String brojTelefonaMobilni) {
+			this.brojTelefonaMobilni = brojTelefonaMobilni;
+		}
+
+
+
+		public String getBrojTelefonaFiksni() {
+			return brojTelefonaFiksni;
+		}
+
+
+
+		public void setBrojTelefonaFiksni(String brojTelefonaFiksni) {
+			this.brojTelefonaFiksni = brojTelefonaFiksni;
 		}
 
 

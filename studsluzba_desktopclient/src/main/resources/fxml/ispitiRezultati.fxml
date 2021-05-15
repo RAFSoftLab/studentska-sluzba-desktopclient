@@ -10,4 +10,4 @@
 <top>
 	<fx:include source="menuBar.fxml" />
 </top>
-</BorderPane>
+</BorderPane>	

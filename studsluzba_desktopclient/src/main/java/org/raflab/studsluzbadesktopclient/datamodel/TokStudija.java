@@ -12,7 +12,7 @@ public class TokStudija {
 	
 	private String vrsta; // upis/obnova
 	private LocalDate datum;
-	private int godina;  // koju upisuje ili obnavlja
+	private Integer godina;  // koju upisuje ili obnavlja
 	private String napomena;
 	private UpisGodine upis;  // jedno od ova dva će biti null
 	private ObnovaGodine obnova; //

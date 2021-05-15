@@ -7,7 +7,7 @@ public class IndeksFormater {
 	// vraca indeks u obliku smer/broj-godina
 	public static String formatIndeks(StudentIndeks si) {
 		if(si==null) return null;
-		return si.getStudProgram()+"/"+si.getBroj()+"-"+si.getGodina();		
+		return si.getStudProgramOznaka()+"/"+si.getBroj()+"-"+si.getGodina();		
 	}
 
 }

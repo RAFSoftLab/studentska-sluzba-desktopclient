@@ -25,12 +25,14 @@ public class StudentProfileRightBarController {
     public void initialize() {		
 		StudentProfileDTO studentProfile = studentProfileController.getStudentProfile();
 		studentImage.setImage(new Image(this.getClass().getResourceAsStream("/fxml/img/student-slikaprimer.jpeg")));
-		String text = "Profil studenta: \n"+studentProfile.getIme()+"\n"+studentProfile.getPrezime() + "\nIndeks:\n"+IndeksFormater.formatIndeks(studentProfile.getAktivanIndeks());
+		String text = "Profil studenta: \n"+studentProfile.getIme()+" "+studentProfile.getPrezime() + "\nIndeks: "+
+					IndeksFormater.formatIndeks(studentProfile.getIndeks()) 
+					+ "\n" + studentProfile.getIndeks().getStudijskiProgram()+"  ";
 		studentPodaciText.setText(text);	
 		
     }
 	
 	
 	
-
+			
 }

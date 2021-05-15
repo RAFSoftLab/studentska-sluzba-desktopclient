@@ -1,5 +1,6 @@
 package org.raflab.studsluzbadesktopclient.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -9,10 +10,16 @@ import org.raflab.studsluzbadesktopclient.coders.CoderType;
 import org.raflab.studsluzbadesktopclient.coders.SimpleCode;
 import org.raflab.studsluzbadesktopclient.datamodel.PrviUpis;
 import org.raflab.studsluzbadesktopclient.datamodel.SrednjaSkola;
+import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentPodaci;
+import org.raflab.studsluzbadesktopclient.datamodel.StudentProfileDTO;
+import org.raflab.studsluzbadesktopclient.datamodel.StudijskiProgram;
+import org.raflab.studsluzbadesktopclient.servercalls.StudProgramiServiceConsumer;
 import org.raflab.studsluzbadesktopclient.servercalls.StudentServiceConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.sun.glass.events.MouseEvent;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,7 +34,7 @@ import static org.raflab.studsluzbadesktopclient.utils.TextInputUtils.*;
 public class StudentPodaciController {
 	
 	@Autowired
-	StudentServiceConsumer serviceConsumer;
+	StudentServiceConsumer studentServiceConsumer;
 	
 	@Autowired
 	CoderFactory coderFactory;
@@ -37,9 +44,17 @@ public class StudentPodaciController {
 	@Autowired  
 	MainView mainView;
 	
+	@Autowired
+	StudentProfileController studentProfileController;
+	
+	@Autowired
+	StudProgramiServiceConsumer studProgramiServiceConsumer;
+	
 	// forma ce se koristiti za unos novog i za azuriranje postojeceg studenta
 	private StudentPodaci studentPodaci;
+	
 
+	
 	
 	@FXML private TextField imeTf;
 	@FXML private TextField prezimeTf;
@@ -51,7 +66,8 @@ public class StudentPodaciController {
 	@FXML private TextField emailTf;
 	
 	
-	@FXML TextField brojTelefonaTf;
+	@FXML TextField brojTelefonaMobilniTf;
+	@FXML TextField brojTelefonaFiksniTf;
 	@FXML TextField adresaPrebivalistaTf;
 	@FXML ComboBox<SimpleCode> mestoPrebivalistaCb;
 	@FXML TextField adresaStanovanjaTf;
@@ -97,6 +113,21 @@ public class StudentPodaciController {
 	
 	// TODO dodati sliku
 	
+	// indeksi tab
+	
+	@FXML TableView<StudentIndeks> indeksiTable;
+	
+	@FXML TextField indeksGodinaTf;
+	
+	@FXML ComboBox<StudijskiProgram> indeksStudijskiProgramCb;
+	
+	@FXML TextField indeksBrojTf;
+	
+	@FXML DatePicker indeksDatumDp;
+	
+	@FXML CheckBox indeksAktivanChB;
+	
+	
 	public void handleSaveStudent(ActionEvent event) {
 		// TODO dodati validacije za email, brojeve, obavezna polja
 		try {
@@ -111,7 +142,7 @@ public class StudentPodaciController {
 		studentPodaci.setDatumRodjenja(datumRodjenjaDp.getValue());
 		if(mestoRodjenjaCb.getValue()!=null) studentPodaci.setMestoPrebivalista(mestoRodjenjaCb.getValue().getCode());
 		if(drzavaRodjenjaCb.getValue()!=null) studentPodaci.setDrzavaRodjenja(drzavaRodjenjaCb.getValue().getCode());
-		if(drzavaRodjenjaCb.getValue()!=null) studentPodaci.setDrzavljanstvo(drzavljanstvoCb.getValue().getCode());
+		if(drzavljanstvoCb.getValue()!=null) studentPodaci.setDrzavljanstvo(drzavljanstvoCb.getValue().getCode());
 		studentPodaci.setNacionalnost(getTextIfNotEmpty(nacionalnostTf));
 		studentPodaci.setBrojLicneKarte(getTextIfNotEmpty(brojLicneKarteTf));
 		studentPodaci.setLicnuKartuIzdao(getTextIfNotEmpty(licnuKartuIzdaoTf));
@@ -119,7 +150,8 @@ public class StudentPodaciController {
 		// kontakt podaci
 		
 		studentPodaci.setEmail(getTextIfNotEmpty(emailTf));
-		studentPodaci.setBrojTelefona(getTextIfNotEmpty(brojTelefonaTf));
+		studentPodaci.setBrojTelefonaMobilni(getTextIfNotEmpty(brojTelefonaMobilniTf));
+		studentPodaci.setBrojTelefonaFiksni(getTextIfNotEmpty(brojTelefonaFiksniTf));
 		studentPodaci.setAdresa(getTextIfNotEmpty(adresaPrebivalistaTf));
 		studentPodaci.setAdresaStanovanja(getTextIfNotEmpty(adresaStanovanjaTf));
 		if(mestoPrebivalistaCb.getValue()!=null) studentPodaci.setMestoPrebivalista(mestoPrebivalistaCb.getValue().getCode());
@@ -127,7 +159,7 @@ public class StudentPodaciController {
 		
 		
 		// prvi upis
-		PrviUpis pu = null;
+		PrviUpis pu = null;	
 		if(studentPodaci.getPrviUpis()==null) {
 			pu = new PrviUpis();
 			studentPodaci.setPrviUpis(pu);
@@ -153,7 +185,7 @@ public class StudentPodaciController {
 		
 		
 		try {
-			Long id = serviceConsumer.saveStudent(studentPodaci);
+			Long id = studentServiceConsumer.saveStudent(studentPodaci);
 			if(id!=null) {				
 				actionTarget.setText("Student sačuvan");	
 				studentPodaci.setId(id);
@@ -169,7 +201,38 @@ public class StudentPodaciController {
 	
 	@FXML
     public void initialize() {
-		studentPodaci = null;  // TODO ispraviti da moze i da se azurira postojeci
+		if(studentPodaci!=null) {
+			imeTf.setText(studentPodaci.getIme());
+			prezimeTf.setText(studentPodaci.getPrezime());
+			if(studentPodaci.getSrednjeIme()!=null) srednjeImeTf.setText(studentPodaci.getSrednjeIme());
+			if(studentPodaci.getJmbg()!=null) jmbgTf.setText(studentPodaci.getJmbg());
+			if(studentPodaci.getDatumRodjenja()!=null) datumRodjenjaDp.setValue(studentPodaci.getDatumRodjenja());		
+			
+			/*
+			mestoRodenja
+			drzavaRodjenja
+			drzavljanstvo
+			nacionalnost
+			brojLicneKarte
+			licnaKartaIzdataOd
+			*/
+			
+			// kontakt podaci
+			if(studentPodaci.getEmail()!=null) emailTf.setText(studentPodaci.getEmail());
+			if(studentPodaci.getBrojTelefonaMobilni()!=null) brojTelefonaMobilniTf.setText(studentPodaci.getBrojTelefonaMobilni());
+			if(studentPodaci.getBrojTelefonaFiksni()!=null) brojTelefonaFiksniTf.setText(studentPodaci.getBrojTelefonaFiksni());
+			if(studentPodaci.getAdresa()!=null) adresaPrebivalistaTf.setText(studentPodaci.getAdresa());
+			
+			// mesto prebivalista
+			
+			
+			// indeksi
+			List<StudentIndeks> indeksiStudenta = studentServiceConsumer.getIndeksiForStudentPodaci(studentPodaci.getId());
+			indeksiTable.setItems(FXCollections.observableArrayList(indeksiStudenta));
+			
+		}
+		
+		
 		List<SimpleCode> drzavaCodes = coderFactory.getSimpleCoder(CoderType.DRZAVA).getCodes();
 		drzavaRodjenjaCb.setItems(FXCollections.observableArrayList(drzavaCodes));
 		drzavaRodjenjaCb.setValue(new SimpleCode("Republika Srbija"));
@@ -182,19 +245,77 @@ public class StudentPodaciController {
 		mestoStanovanjaCb.setItems(mestaCodesObservableList);
 		List<SrednjaSkola> srednjeSkole = coderFactory.getSrednjeSkole(true);
 		srednjeSkolaCb.setItems(FXCollections.observableArrayList(srednjeSkole));
-		
+		indeksDatumDp.setValue(LocalDate.now());
+		List<StudijskiProgram> studProgrami = studProgramiServiceConsumer.getSudijskiProgramiSorted();
+		indeksStudijskiProgramCb.setItems(FXCollections.observableArrayList(studProgrami));
     }
 	
-	public void handleOpenModalSrednjeSkole(ActionEvent ae) {
-		// TODO brisanje i promena postojećih srednjih skola ?? strani ključ
+	
+	public void handleOpenModalSrednjeSkole(ActionEvent ae) {		
 		mainView.openModal("addSrednjaSkola");
 		
 	}
 	
 	
-	
 	public void updateSrednjeSkole() {
 		List<SrednjaSkola> srednjeSkole = coderFactory.getSrednjeSkole(false);
 		srednjeSkolaCb.setItems(FXCollections.observableArrayList(srednjeSkole));
+	}
+	
+	public void setStudentPodaci(StudentPodaci sp) {
+		studentPodaci = sp;		
+	}
+	
+	public void handleOtvoriProfil() {
+		StudentIndeks selected = indeksiTable.getSelectionModel().getSelectedItem();
+		if(selected!=null) {
+			StudentProfileDTO studentProfile = studentServiceConsumer.getStudentProfileForIndeksId(selected.getId());
+			studentProfileController.setStudentProfile(studentProfile);
+			mainView.changeRoot("studentProfilePodaci");
+		}
+		
+	}
+	
+
+	
+	public void handleSacuvajIndeks() {
+		StudentIndeks si = null;		
+		si = new StudentIndeks();			
+		si.setBroj(getIntIfNotEmpty(indeksBrojTf));
+		si.setGodina(getIntIfNotEmpty(indeksGodinaTf));
+		si.setStudijskiProgram(indeksStudijskiProgramCb.getValue());
+		si.setAktivan(indeksAktivanChB.isSelected());
+		si.setVaziOd(indeksDatumDp.getValue());
+		si.setStudent(studentPodaci);
+		studentServiceConsumer.saveStudentIndeks(si);
+		List<StudentIndeks> indeksiStudenta = studentServiceConsumer.getIndeksiForStudentPodaci(studentPodaci.getId());
+		indeksiTable.setItems(FXCollections.observableArrayList(indeksiStudenta));
+		
+	}
+	
+	public void handleIzmeniIndeks() {
+		StudentIndeks si = indeksiTable.getSelectionModel().getSelectedItem();
+		if(si!=null) {						
+			si.setBroj(getIntIfNotEmpty(indeksBrojTf));
+			si.setGodina(getIntIfNotEmpty(indeksGodinaTf));
+			si.setStudijskiProgram(indeksStudijskiProgramCb.getValue());
+			si.setAktivan(indeksAktivanChB.isSelected());
+			si.setVaziOd(indeksDatumDp.getValue());
+			si.setStudent(studentPodaci);
+			studentServiceConsumer.saveStudentIndeks(si);	
+			List<StudentIndeks> indeksiStudenta = studentServiceConsumer.getIndeksiForStudentPodaci(studentPodaci.getId());
+			indeksiTable.setItems(FXCollections.observableArrayList(indeksiStudenta));
+		}
+	}
+	
+	public void handleIndeksiTableMouseClicked(javafx.scene.input.MouseEvent me) {
+		if(me.getClickCount() == 2) {
+			StudentIndeks si = indeksiTable.getSelectionModel().getSelectedItem();
+			indeksBrojTf.setText(String.valueOf(si.getBroj()));
+			indeksGodinaTf.setText(String.valueOf(si.getGodina()));
+			indeksStudijskiProgramCb.setValue(si.getStudijskiProgram());
+			indeksAktivanChB.setSelected(si.isAktivan());
+			indeksDatumDp.setValue(si.getVaziOd());			
+		}
 	}
 }

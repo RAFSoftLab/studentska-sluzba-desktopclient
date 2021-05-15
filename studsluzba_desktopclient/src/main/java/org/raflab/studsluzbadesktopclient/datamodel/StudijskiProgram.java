@@ -10,7 +10,8 @@ public class StudijskiProgram {
 		private String zvanje;
 		private int trajanjeGodina;
 		private int trajanjeSemestara;
-		private String vrstaStudija; // OAS - osnovne akademske studje, OSS - osnovne strukovne, 	MAS - master akademske studije,
+		private String vrstaStudija; // OAS - osnovne akademske studje, OSS - osnovne strukovne, 	MAS - master akademske studije
+		
 		public Long getId() {
 			return id;
 		}
@@ -60,5 +61,9 @@ public class StudijskiProgram {
 			this.vrstaStudija = vrstaStudija;
 		}
 		
+		@Override
+		public String toString() {
+			return oznaka + "-" + vrstaStudija +"-"+naziv + " ["+godinaAkreditacije+"]";
+		}
 		
 }

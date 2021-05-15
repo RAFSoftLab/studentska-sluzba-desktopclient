@@ -36,6 +36,9 @@ public class SearchStudentController {
 	StudentProfileController studentProfileController;
 	
 	@Autowired
+	StudentPodaciController studentPodaciController;
+	
+	@Autowired
 	CoderFactory coderFactory;
 	
 		
@@ -76,8 +79,7 @@ public class SearchStudentController {
 			si.setStudent(sp);
 			studentProfile = new StudentProfileDTO(si);
 		}else {			
-			studentProfile = serviceConsumer.getStudentProfile(selected.getIdIndeks());	
-			System.out.println("Polozeni predmeti "+studentProfile.getPolozeniPredmeti().size());
+			studentProfile = serviceConsumer.getStudentProfileForIndeksId(selected.getIdIndeks());
 			
 		}
 		
@@ -92,6 +94,16 @@ public class SearchStudentController {
 		List<SimpleCode> studProgramiCodes = coderFactory.getSimpleCoder(CoderType.STUDIJSKI_PROGRAM).getCodes();
 		studProgramCb.setItems(FXCollections.observableArrayList(studProgramiCodes));
     }
+
+	@FXML public void handleOpenPodaci() {
+		StudentDTO selected = studentiTable.getSelectionModel().getSelectedItem();		
+		StudentPodaci sp = serviceConsumer.getStudentById(selected.getIdStudentPodaci());		
+		studentPodaciController.setStudentPodaci(sp);
+		mainView.changeRoot("studentPodaci");
+		
+	}
+	
+	
 	
 	
 	

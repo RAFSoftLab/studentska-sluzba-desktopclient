@@ -9,10 +9,11 @@ public class StudentIndeks{
 	private Long id;
 	private int broj;
 	private int godina;
-	private String studProgram;
+	private String studProgramOznaka;  
 	private boolean aktivan; // aktivan
 	private LocalDate vaziOd;
 	private StudentPodaci student;
+	private StudijskiProgram studijskiProgram;   // na koji studijski program je upisan
 	
 	
 	public Long getId() {
@@ -39,12 +40,14 @@ public class StudentIndeks{
 		this.godina = godina;
 	}
 
-	public String getStudProgram() {
-		return studProgram;
+	
+
+	public String getStudProgramOznaka() {
+		return studProgramOznaka;
 	}
 
-	public void setStudProgram(String studProgram) {
-		this.studProgram = studProgram;
+	public void setStudProgramOznaka(String studProgramOznaka) {
+		this.studProgramOznaka = studProgramOznaka;
 	}
 
 	public boolean isAktivan() {
@@ -77,8 +80,22 @@ public class StudentIndeks{
 	
 	@Override
 	public String toString() {
-		return "StudentIndeks [id=" + id + ", broj=" + broj + ", godina=" + godina + ", studProgram=" + studProgram
+		return "StudentIndeks [id=" + id + ", broj=" + broj + ", godina=" + godina + ", studProgram=" + studProgramOznaka
 				+ ", aktivan=" + aktivan + ", vaziOd=" + vaziOd + ", student=" + student + "]";
+	}
+	
+	public String getStatus() {
+		if(!aktivan) return "neaktivan";
+		return "";
+	}
+
+	public StudijskiProgram getStudijskiProgram() {
+		return studijskiProgram;
+	}
+
+	public void setStudijskiProgram(StudijskiProgram studijskiProgram) {
+		this.studijskiProgram = studijskiProgram;
+		this.studProgramOznaka = studijskiProgram.getOznaka();
 	}
 	
 

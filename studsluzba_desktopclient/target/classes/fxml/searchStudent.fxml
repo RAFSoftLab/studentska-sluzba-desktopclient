@@ -10,11 +10,8 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+
 
 <BorderPane  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raflab.studsluzbadesktopclient.controllers.SearchStudentController">
 
@@ -49,7 +46,7 @@
    		<padding>
         	<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
     	</padding> 
-   		<TableView fx:id="studentiTable" maxHeight="200" prefWidth="700">
+   		<TableView fx:id="studentiTable" minHeight="300" prefWidth="700">
 	     <columns>
 	          <TableColumn fx:id="imeColumn" maxWidth="200.0" prefWidth="150" text="Ime">
 	          	<cellValueFactory>
@@ -68,7 +65,7 @@
 	          </TableColumn>	          
 	          <TableColumn fx:id="studProgramColumn" prefWidth="100" text="Program">
 	          	<cellValueFactory>
-                      <PropertyValueFactory property="studProgram" />
+                      <PropertyValueFactory property="studProgramOznaka" />
                  </cellValueFactory>
 	          </TableColumn>
 	          <TableColumn fx:id="brojColumn" prefWidth="100" text="Broj">
@@ -76,10 +73,21 @@
                       <PropertyValueFactory property="broj" />
                  </cellValueFactory>
 	          </TableColumn>	
+	          <TableColumn prefWidth="100" text="Aktivan indeks">
+	          	<cellValueFactory>
+                      <PropertyValueFactory property="aktivanStr" />
+                 </cellValueFactory>
+	          </TableColumn>	
 	         
 	     </columns>    
 		</TableView>
-		<Button onAction="#handleOpenProfile" text="Otvori" />
+		<HBox alignment="CENTER" spacing="8" >
+			<padding>
+        		<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    		</padding> 
+			<Button onAction="#handleOpenProfile" text="Indeks" />
+			<Button onAction="#handleOpenPodaci" text="Podaci" />
+		</HBox>
 	</VBox>
    </bottom>	
 

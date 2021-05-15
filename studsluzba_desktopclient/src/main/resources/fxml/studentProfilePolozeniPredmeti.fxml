@@ -28,7 +28,7 @@
 	        	<Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
 	    	</padding>
 	    	<Label text="Spisak položenih predmeta"/> 
-			<TableView fx:id="polozeniPredmetiTable" maxHeight="200" prefWidth="700">	
+			<TableView fx:id="polozeniPredmetiTable" maxHeight="400" prefWidth="700">	
 									
 				     <columns>
 				     	  <TableColumn maxWidth="100.0" prefWidth="150" text="Šifra">
@@ -36,7 +36,7 @@
 			                      <PropertyValueFactory property="sifra" />
 			                 </cellValueFactory>
 				          </TableColumn>		
-				     	  <TableColumn maxWidth="200.0" prefWidth="250" text="Naziv">
+				     	  <TableColumn maxWidth="300.0" prefWidth="300" text="Naziv">
 				          	<cellValueFactory>
 			                      <PropertyValueFactory property="naziv" />
 			                 </cellValueFactory>

@@ -31,6 +31,7 @@
 /home/bojana/Raflab-projects/studsluzba/workspace-client/studentska-sluzba-desktopclient/studsluzba_desktopclient/src/main/java/org/raflab/studsluzbadesktopclient/coders/SimpleCode.java
 /home/bojana/Raflab-projects/studsluzba/workspace-client/studentska-sluzba-desktopclient/studsluzba_desktopclient/src/main/java/org/raflab/studsluzbadesktopclient/controllers/MainWindowController.java
 /home/bojana/Raflab-projects/studsluzba/workspace-client/studentska-sluzba-desktopclient/studsluzba_desktopclient/src/main/java/org/raflab/studsluzbadesktopclient/datamodel/TokStudija.java
+/home/bojana/Raflab-projects/studsluzba/workspace-client/studentska-sluzba-desktopclient/studsluzba_desktopclient/src/main/java/org/raflab/studsluzbadesktopclient/servercalls/StudProgramiServiceConsumer.java
 /home/bojana/Raflab-projects/studsluzba/workspace-client/studentska-sluzba-desktopclient/studsluzba_desktopclient/src/main/java/org/raflab/studsluzbadesktopclient/datamodel/UpisGodine.java
 /home/bojana/Raflab-projects/studsluzba/workspace-client/studentska-sluzba-desktopclient/studsluzba_desktopclient/src/main/java/org/raflab/studsluzbadesktopclient/StudsluzbaFxClientApp.java
 /home/bojana/Raflab-projects/studsluzba/workspace-client/studentska-sluzba-desktopclient/studsluzba_desktopclient/src/main/java/org/raflab/studsluzbadesktopclient/controllers/StudentProfileObnovaModalController.java

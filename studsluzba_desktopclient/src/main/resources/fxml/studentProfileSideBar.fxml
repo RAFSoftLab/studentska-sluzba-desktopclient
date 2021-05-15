@@ -9,7 +9,7 @@
 	<Button styleClass="sidebar-button" text="Predmeti" minWidth="150"/>
 	<Button styleClass="sidebar-button" text="Položeni predmeti"  minWidth="150" onAction="#handleOpenProfilePolozeniPredmeti"/>
 	<Button styleClass="sidebar-button" text="Prijavljeni ispiti" minWidth="150"/>	
-	<Button styleClass="sidebar-button" text="Upis/obnove godine" minWidth="150"   onAction="#handleOpenProfileUpisObnove"/>
+	<Button styleClass="sidebar-button" text="Tok studija" minWidth="150"   onAction="#handleOpenProfileUpisObnove"/>
 	<Button styleClass="sidebar-button" text="Uplate" minWidth="150" />
 	<Button styleClass="sidebar-button" text="Uverenja" minWidth="150"/>
 </VBox>

@@ -73,7 +73,7 @@ public class StudentProfileUpisModalController {
 		ug.setDatumUpisa(datum.getValue());
 		ug.setGodinaKojaSeUpisuje(getIntIfNotEmpty(godina));
 		ug.setNapomena(getTextIfNotEmpty(napomena));
-		ug.setStudentIndeks(studentProfileController.getStudentProfile().getAktivanIndeks());		
+		ug.setStudentIndeks(studentProfileController.getStudentProfile().getIndeks());		
 		ug.setPredmeti(listaNepolozeni.getItems());
 		ug.setSkolskaGodina(skolskeGodineCB.getValue());
 		Long id = tokStudijaServiceConsumer.saveUpis(ug);

@@ -28,7 +28,7 @@
 	   		<padding>
 	        	<Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
 	    	</padding>
-	    	<Label text="Tok studija"/> 
+	    	<Label text="Upisi i obnove godina"/> 
 			<TableView fx:id="tokStudijaTable" maxHeight="200" prefWidth="700">									
 				     <columns>
 				     	  <TableColumn maxWidth="100.0" text="Vrsta">

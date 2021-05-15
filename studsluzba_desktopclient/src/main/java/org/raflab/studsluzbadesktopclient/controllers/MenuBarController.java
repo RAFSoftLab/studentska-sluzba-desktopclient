@@ -1,7 +1,5 @@
 package org.raflab.studsluzbadesktopclient.controllers;
 
-import java.util.List;
-
 import org.raflab.studsluzbadesktopclient.MainView;
 import org.raflab.studsluzbadesktopclient.coders.CoderType;
 import org.raflab.studsluzbadesktopclient.coders.SimpleCode;
@@ -48,6 +46,9 @@ public class MenuBarController {
 	@Autowired
 	SkolskaGodina aktivnaSkolskaGodina;
 	
+	@Autowired
+	StudentPodaciController studentPodaciController;
+	
 	
 	public void openSearchStudent() {
 		mainView.changeRoot("searchStudent");
@@ -57,8 +58,9 @@ public class MenuBarController {
 		mainView.changeRoot("searchNastavnik");
 	}
 	
-	public void openNewStudent() {		
-		mainView.changeRoot("newStudent");
+	public void openNewStudent() {	
+		studentPodaciController.setStudentPodaci(null);
+		mainView.changeRoot("studentPodaci");
 	}
 	
 	public void openNewNastavnik() {
@@ -101,7 +103,7 @@ public class MenuBarController {
 			fastSearchError.setText("Student nije pronađen");
 		else {
 			fastSearchError.setText("");	
-			StudentProfileDTO studentProfile = studentServiceConsumer.getStudentProfile(studentIndeks.getId());
+			StudentProfileDTO studentProfile = studentServiceConsumer.getStudentProfileForIndeksId(studentIndeks.getId());
 			studentProfileController.setStudentProfile(studentProfile);
 			mainView.changeRoot("studentProfilePodaci");			
 		}

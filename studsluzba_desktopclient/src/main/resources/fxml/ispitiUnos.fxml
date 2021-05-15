@@ -52,9 +52,9 @@
 	                      <PropertyValueFactory property="mestoOdrzavanja" />
 	                 </cellValueFactory>
 		          </TableColumn>			          
-		          <TableColumn minWidth="100.0" text="Zaključen">
+		          <TableColumn minWidth="100.0" text="Datum verifikacije">
 		          	<cellValueFactory>
-	                      <PropertyValueFactory property="zakljucenStr" />
+	                      <PropertyValueFactory property="datumVerifikacije" />
 	                 </cellValueFactory>
 		          </TableColumn>			          
 			   </columns>

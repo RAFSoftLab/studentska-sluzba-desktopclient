@@ -59,4 +59,6 @@ public class SifarniciServiceConsumer {
 		return baseUrl+CODER_URL_PATH+"/"+coderType+"/"+pathEnd;
 	}
 	
+	
+	
 }

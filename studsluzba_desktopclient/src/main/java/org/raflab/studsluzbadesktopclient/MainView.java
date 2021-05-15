@@ -41,7 +41,7 @@ public class MainView {
 		try {
 			scene.setRoot(loader.load());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO log
 			e.printStackTrace();
 		}
 	}

@@ -21,8 +21,7 @@ import java.util.List;
 
 public class StudentProfileDTO {
 	
-	private StudentIndeks aktivanIndeks;  
-	private List<StudentIndeks> neaktivniIndeksi;
+	private StudentIndeks indeks;
 	private List<PolozenPredmet> polozeniPredmeti;
 	private List<UpisGodine> upisiGodine;
 	private List<ObnovaGodine> obnoveGodine;	
@@ -42,16 +41,11 @@ public class StudentProfileDTO {
 	
 	
 	public StudentProfileDTO(StudentIndeks studentIndeks) {
-		this.aktivanIndeks = studentIndeks;
+		this.indeks = studentIndeks;
 		
 	}
 	
-	public StudentIndeks getAktivanIndeks() {
-		return aktivanIndeks;
-	}
-	public void setAktivanIndeks(StudentIndeks studentIndeks) {
-		this.aktivanIndeks = studentIndeks;
-	}
+	
 	public List<PolozenPredmet> getPolozeniPredmeti() {
 		return polozeniPredmeti;
 	}
@@ -83,12 +77,7 @@ public class StudentProfileDTO {
 	public void setObnoveGodine(List<ObnovaGodine> obnoveGodine) {
 		this.obnoveGodine = obnoveGodine;
 	}
-	public List<StudentIndeks> getNeaktivniIndeksi() {
-		return neaktivniIndeksi;
-	}
-	public void setNeaktivniIndeksi(List<StudentIndeks> neaktivniIndeksi) {
-		this.neaktivniIndeksi = neaktivniIndeksi;
-	}
+	
 	public List<PrijavaIspita> getPrijaveIspita() {
 		return prijaveIspita;
 	}
@@ -105,11 +94,11 @@ public class StudentProfileDTO {
 	}
 	
 	public boolean noIndeks() {
-		return this.aktivanIndeks.getStudProgram()==null || this.aktivanIndeks.getGodina()== 0;
+		return this.indeks.getStudProgramOznaka()==null || this.indeks.getGodina()== 0;
 	}
 	
 	public StudentPodaci getStudentPodaci() {
-		return this.aktivanIndeks==null ? null : aktivanIndeks.getStudent();
+		return this.indeks==null ? null : this.indeks.getStudent();
 	}
 	
 	public String getImeSrednjeSlovoPrezime() {		
@@ -134,8 +123,8 @@ public class StudentProfileDTO {
 		return getStudentPodaci().getAdresa();
 	}
 	
-	public String getBrojTelefona() {
-		return getStudentPodaci().getBrojTelefona();		
+	public String getBrojTelefonaMobilni() {
+		return getStudentPodaci().getBrojTelefonaMobilni();		
 	}
 	
 	public String getEmail() {
@@ -150,6 +139,16 @@ public class StudentProfileDTO {
 
 	public void setNepolozeniPredmeti(List<Predmet> nepolozeniPredmeti) {
 		this.nepolozeniPredmeti = nepolozeniPredmeti;
+	}
+
+
+	public StudentIndeks getIndeks() {
+		return indeks;
+	}
+
+
+	public void setIndeks(StudentIndeks indeks) {
+		this.indeks = indeks;
 	}
 	
 	

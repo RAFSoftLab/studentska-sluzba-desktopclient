@@ -18,7 +18,7 @@
 	    	</padding>	    	
 			<TableView fx:id="skolskeGodineTable" maxHeight="200" maxWidth="500" onMouseClicked="#handleMouseClicked">
 				 <columns>
-				     	  <TableColumn maxWidth="100.0" prefWidth="150" text="Godina">
+				     	 <TableColumn maxWidth="100.0" prefWidth="150" text="Godina">
 				          	<cellValueFactory>
 			                      <PropertyValueFactory property="godinaStr" />
 			                 </cellValueFactory>
@@ -33,6 +33,7 @@
 			                      <PropertyValueFactory property="aktivnaStr" />
 			                 </cellValueFactory>
 				          </TableColumn>		
+				          
 				   </columns>
 			</TableView>
 			</VBox>										

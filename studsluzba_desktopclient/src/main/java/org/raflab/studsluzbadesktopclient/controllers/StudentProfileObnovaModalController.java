@@ -87,7 +87,7 @@ public class StudentProfileObnovaModalController {
 		og.setDatumObnove(datum.getValue());
 		og.setGodinaKojuObnavlja(getIntIfNotEmpty(godina));
 		og.setNapomena(getTextIfNotEmpty(napomena));
-		og.setStudentIndeks(studentProfileController.getStudentProfile().getAktivanIndeks());		
+		og.setStudentIndeks(studentProfileController.getStudentProfile().getIndeks());		
 		og.setUpisujePredmete(listaNepolozeni.getSelectionModel().getSelectedItems());
 		og.setSkolskaGodina(aktivnaSkolskaGodina);
 		Long id = tokStudijaServiceConsumer.saveObnova(og);

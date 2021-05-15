@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
-
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.Text?>
@@ -78,12 +78,14 @@
          <GridPane alignment="center" hgap="10" vgap="10">
          	<Label text="Emejl" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
 		   	<TextField fx:id="emailTf"  GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-		   	<Label text="Broj telefona" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-		   	<TextField fx:id="brojTelefonaTf"   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-		   	<Label text="Adresa prebivališta" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-		   	<TextField fx:id="adresaPrebivalistaTf" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-		   	<Label text="Mesto prebivališta" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-		   	<ComboBox fx:id="mestoPrebivalistaCb" GridPane.columnIndex="1" GridPane.rowIndex="3"/>		   	
+		   	<Label text="Broj telefona (mob)" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+		   	<TextField fx:id="brojTelefonaMobilniTf"   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+		   	<Label text="Broj telefona (fiksni)" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+		   	<TextField fx:id="brojTelefonaFiksniTf"   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+		   	<Label text="Adresa prebivališta" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+		   	<TextField fx:id="adresaPrebivalistaTf" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+		   	<Label text="Mesto prebivališta" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+		   	<ComboBox fx:id="mestoPrebivalistaCb" GridPane.columnIndex="1" GridPane.rowIndex="4"/>		   	
 		  </GridPane>		 
 		  
 		  <GridPane  alignment="center" hgap="10" vgap="10"> 	
@@ -151,5 +153,70 @@
 		  	
 		  </BorderPane>	
          </Tab>
+         <Tab text="Indeksi">
+         <VBox alignment="CENTER" spacing = "10">			
+	   		<padding>
+	        	<Insets bottom="100.0" left="20.0" right="20.0" top="10.0" />
+	    	</padding>	  
+         <HBox spacing="8" alignment="center">
+         	<TableView fx:id="indeksiTable" maxHeight="200" maxWidth="500" onMouseClicked="#handleIndeksiTableMouseClicked">
+				 <columns>
+				  <TableColumn maxWidth="100.0" prefWidth="150" text="Godina">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="godina" />
+			                 </cellValueFactory>
+				          </TableColumn>
+				          <TableColumn maxWidth="150.0" text="Program">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="studProgramOznaka" />
+			                 </cellValueFactory>
+				          </TableColumn>				
+				          <TableColumn maxWidth="100.0"  text="Broj">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="broj" />
+			                 </cellValueFactory>
+				          </TableColumn>	
+				          <TableColumn maxWidth="100.0"  text="Status">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="status" />
+			                </cellValueFactory>
+				     	  </TableColumn>
+				     	  <TableColumn maxWidth="100.0"  text="Važi od">
+				          	<cellValueFactory>
+			                      <PropertyValueFactory property="vaziOd" />
+			                </cellValueFactory>
+				     	  </TableColumn>
+				   </columns>
+			</TableView>
+			
+         </HBox>
+         <Button text="Otvori profil" onAction="#handleOtvoriProfil"/>	  		
+        	<VBox spacing="10" alignment="CENTER">
+        		
+        		<padding>
+	        		<Insets bottom="20.0" left="20.0" right="20.0" top="50.0" />
+	    		</padding>
+	    		
+	   	    	<GridPane hgap="7" vgap = "7" alignment="CENTER">
+				
+				<Label text="Godina" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+				<TextField fx:id="indeksGodinaTf"  GridPane.columnIndex="1" GridPane.rowIndex="0" />
+				<Label text="Oznaka stud. programa" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+				<ComboBox fx:id="indeksStudijskiProgramCb"  GridPane.columnIndex="1" GridPane.rowIndex="1" />
+				<Label text="Broj" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+				<TextField fx:id="indeksBrojTf"  GridPane.columnIndex="1" GridPane.rowIndex="2" />
+				
+				<Label text="Datum" GridPane.halignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3"/>			
+				<DatePicker fx:id="indeksDatumDp"  GridPane.columnIndex="1" GridPane.rowIndex="3"/>		
+				
+				<CheckBox fx:id="indeksAktivanChB" text="Aktivan" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+				<HBox spacing = "8" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5">
+					<Button text="Sačuvaj novi" onAction="#handleSacuvajIndeks" />	
+					<Button text="Izmeni" onAction="#handleIzmeniIndeks" />								
+				</HBox>
+			</GridPane>	
+			</VBox>		
+		</VBox>		
+        </Tab>
 
  </TabPane>

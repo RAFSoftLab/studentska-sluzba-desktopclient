@@ -47,7 +47,7 @@
 				          </TableColumn>
 				          <TableColumn minWidth="100.0"  text="Stud. program">
 				          	<cellValueFactory>
-			                      <PropertyValueFactory property="studProgram" />
+			                      <PropertyValueFactory property="studProgramOznaka" />
 			                 </cellValueFactory>
 				          </TableColumn>
 				          <TableColumn minWidth="100.0"  text="Godina">

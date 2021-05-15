@@ -32,6 +32,7 @@
 
 <center>
 
+<VBox spacing ="8" alignment="CENTER">
 
 <GridPane hgap="8" vgap="8" alignment="CENTER">
 
@@ -54,6 +55,9 @@
     <Label text="" fx:id="emailLabel" GridPane.columnIndex="1" GridPane.rowIndex="6" />   
        
 </GridPane>
+<Button text = "Izmena" onAction="#handleOtvoriIzmenaPodataka" />
+
+</VBox>
 </center>
 <right>
 	<fx:include source="studentProfileRightBar.fxml" />

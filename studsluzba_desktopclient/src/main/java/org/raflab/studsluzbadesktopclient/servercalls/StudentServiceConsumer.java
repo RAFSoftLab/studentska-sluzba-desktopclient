@@ -2,9 +2,7 @@ package org.raflab.studsluzbadesktopclient.servercalls;
 
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.raflab.studsluzbadesktopclient.datamodel.StudentDTO;
 import org.raflab.studsluzbadesktopclient.datamodel.StudentIndeks;
@@ -18,10 +16,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+
 
 @RestController
 public class StudentServiceConsumer {
@@ -47,7 +45,7 @@ public class StudentServiceConsumer {
 	      HttpEntity <StudentIndeks> entity = new HttpEntity<StudentIndeks>(si, headers);
 	      
 	      return restTemplate.exchange
-	    		  (createURL("addindeks"), HttpMethod.POST, entity, Long.class).getBody();
+	    		  (createURL("saveindeks"), HttpMethod.POST, entity, Long.class).getBody();
 	}
 	
 	private String createURL(String pathEnd) {
@@ -66,8 +64,10 @@ public class StudentServiceConsumer {
 	
 	public List<StudentDTO> searchStudent(String ime, String prezime, Integer godinaUpisa, String studProgram, Integer broj) {  	      	
 	      UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(createURL("search"));
-	      if(ime!=null) builder.queryParam("ime", ime);
-	      if(prezime!=null) builder.queryParam("prezime", prezime);
+	      
+			
+		  if(ime!=null) builder.queryParam("ime", ime);			
+		  if(prezime!=null) builder.queryParam("prezime", prezime);	     // TODO ne radi pretraživanje sa načim slovima			
 	      if(godinaUpisa!=null) builder.queryParam("godina", godinaUpisa);
 	      if(studProgram!=null) builder.queryParam("studProgram", studProgram);
 	      if(broj!=null) builder.queryParam("broj", broj);     	    		  
@@ -93,13 +93,18 @@ public class StudentServiceConsumer {
 	      else return null;   	    		  
 	}
 	
-	public StudentProfileDTO getStudentProfile(Long id) {
+	public StudentProfileDTO getStudentProfileForIndeksId(Long id) {
 		 UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(createURL("profile")+"/"+id);	    		  
 	      ResponseEntity<StudentProfileDTO> response = restTemplate.getForEntity(builder.toUriString(), StudentProfileDTO.class, HttpMethod.GET);
 	      if(response.getStatusCode()==HttpStatus.OK)
 	    	  return response.getBody();
-	      else return null;   	  
-		
+	      else return null; 	
+	}
+	
+	public List<StudentIndeks> getIndeksiForStudentPodaci(Long idStudentPodaci){
+		StudentIndeks[] indeksi = restTemplate.getForObject(createURL("indeksi/"+idStudentPodaci), StudentIndeks[].class);
+		return Arrays.asList(indeksi);       
+	     
 	}
 	
 	

@@ -13,7 +13,7 @@ public class ObnovaGodine {
 	
 	private StudentIndeks studentIndeks;
 	
-	private int godinaKojuObnavlja;	
+	private Integer godinaKojuObnavlja;	
 
 	private List<Predmet> upisujePredmete;
 	
@@ -29,10 +29,10 @@ public class ObnovaGodine {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public int getGodinaKojuObnavlja() {
+	public Integer getGodinaKojuObnavlja() {
 		return godinaKojuObnavlja;
 	}
-	public void setGodinaKojuObnavlja(int godinaKojuObnavlja) {
+	public void setGodinaKojuObnavlja(Integer godinaKojuObnavlja) {
 		this.godinaKojuObnavlja = godinaKojuObnavlja;
 	}
 	public List<Predmet> getUpisujePredmete() {
