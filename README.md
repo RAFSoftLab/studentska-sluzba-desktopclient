@@ -17,7 +17,7 @@ Urađeno
 - otvaranje profila studenta posle pretrage
 - okvir za rad sa raznim vrstama sifarnika (mesta, drzave, zvanja, srednje skole)
 - unos novog studenta i otvaranje profila sa unosom indeksa
-- profil studenta: pregeled podataka, položenih predmeta i toka studija (upis i obnova)
+- profil studenta: pregled podataka, položenih predmeta i toka studija (upis i obnova)
 - unos upisa i obnove godine, sa pregeldom prenetih/upisanih godina - treba još malo doraditi
 
 Uraditi
